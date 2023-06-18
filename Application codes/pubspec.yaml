@@ -35,6 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
 
   cupertino_icons: ^1.0.2
+  awesome_dialog: ^3.0.2
   url_launcher: ^6.1.10
   firebase_auth: ^4.0.2
   cloud_functions: ^4.0.12
@@ -62,6 +63,10 @@ dependencies:
   dio: ^5.0.1
   path_provider: ^2.0.13
   open_file: ^3.2.1
+  font_awesome_flutter: ^10.1.0
+  flutter_rating_bar: ^4.0.1
+  intl: ^0.17.0
+  animations: ^2.0.3
 
 
 dev_dependencies:
@@ -89,6 +94,23 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - Assets/Images/Hind e-pay logo.png
+    - Assets/Images/GenerateVoucher.png
+    - Assets/Images/Wallet.png
+    - Assets/Images/E rupi.png
+    - Assets/Images/Coins.png
+    - Assets/Images/organization.jpg
+    - Assets/Images/user.jpg
+    - Assets/Images/Deposit-Money-Icon.png
+    - Assets/Images/bg button.png
+    - Assets/Images/bg screen.png
+    - Assets/Images/history.jpeg
+    - Assets/Images/hindepay--logo-short.png
+    - Assets/Images/withdrw.png
+    - Assets/Images/upi png.png
+    - Assets/Images/balance chek.png
+    - Assets/Images/deposit.png
+    - Assets/Images/E Rupi icon.png
+    - Assets/Images/hind e pay white logo.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -102,12 +124,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: "BebasNeue"
+    - fonts:
+        - asset: Assets/Fonts/BebasNeue-Regular.ttf
+#         - asset: fonts/Schyler-Italic.ttf
+#           style: italic
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hind_e_pay/EnterApp.dart';
-
+import 'package:hind_e_pay/selectRole.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -8,21 +7,17 @@ class SplashScreen extends StatefulWidget {
   @override
   State<SplashScreen> createState() => _SplashScreen();
 }
-
 class _SplashScreen extends State<SplashScreen> {
   @override
   void initState(){
     super.initState();
     _navigatetohome();
   }
-
   _navigatetohome() async {
     await Future.delayed(Duration(milliseconds: 1500), () {});
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => EnterApp()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>SelectRole()));
   }
-
   @override
-
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Builder(builder:(context)=>Scaffold(
