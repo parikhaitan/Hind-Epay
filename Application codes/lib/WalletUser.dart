@@ -8,46 +8,62 @@ class WalletUser extends StatefulWidget {
   @override
   State<WalletUser> createState() => _WalletUser();
 }
+
 class _WalletUser extends State<WalletUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: reusableAppBar(MediaQuery.of(context).size.width, "Wallet", context),
+      appBar:
+          reusableAppBar(MediaQuery.of(context).size.width, "Wallet", context),
       resizeToAvoidBottomInset: true,
-
-      backgroundColor: Color(0xfff16f00),
-      body:
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('Assets/Images/bg screen.png'), fit: BoxFit.cover),
-            ),
-            child: Row(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('Assets/Images/bg screen.png'),
+              fit: BoxFit.cover),
+        ),
+        child: Row(
+          children: [
+            SizedBox(width: 0.1 * MediaQuery.of(context).size.width),
+            Column(
               children: [
-                SizedBox(width: 0.1* MediaQuery.of(context).size.width),
-                Column(
-                  children:[
-                    SizedBox(height: 0.1* MediaQuery.of(context).size.height),
-                    reusableRowContainer(MediaQuery.of(context).size.height, MediaQuery.of(context).size.width, Image.asset(
+                SizedBox(height: 0.1 * MediaQuery.of(context).size.height),
+                reusableRowContainer(
+                    MediaQuery.of(context).size.height,
+                    MediaQuery.of(context).size.width,
+                    Image.asset(
                       "Assets/Images/Deposit-Money-Icon.png",
-                    ),"DEPOSIT"),
-                    SizedBox(height: 0.03* MediaQuery.of(context).size.height),
-                    reusableRowContainer(MediaQuery.of(context).size.height, MediaQuery.of(context).size.width, Image.asset(
+                    ),
+                    "DEPOSIT"),
+                SizedBox(height: 0.03 * MediaQuery.of(context).size.height),
+                reusableRowContainer(
+                    MediaQuery.of(context).size.height,
+                    MediaQuery.of(context).size.width,
+                    Image.asset(
                       "Assets/Images/withdrw.png",
-                    ),"WITHDRAW"),
-                    SizedBox(height: 0.03* MediaQuery.of(context).size.height),
-                    reusableRowContainer(MediaQuery.of(context).size.height, MediaQuery.of(context).size.width, Image.asset(
+                    ),
+                    "WITHDRAW"),
+                SizedBox(height: 0.03 * MediaQuery.of(context).size.height),
+                reusableRowContainer(
+                    MediaQuery.of(context).size.height,
+                    MediaQuery.of(context).size.width,
+                    Image.asset(
                       "Assets/Images/balance chek.png",
-                    ),"BALANCE"),
-                    SizedBox(height: 0.03* MediaQuery.of(context).size.height),
-                    reusableRowContainer(MediaQuery.of(context).size.height, MediaQuery.of(context).size.width, Image.asset(
+                    ),
+                    "BALANCE"),
+                SizedBox(height: 0.03 * MediaQuery.of(context).size.height),
+                reusableRowContainer(
+                    MediaQuery.of(context).size.height,
+                    MediaQuery.of(context).size.width,
+                    Image.asset(
                       "Assets/Images/upi png.png",
-                    ),"UPI"),
-                  ],
-                ),
+                    ),
+                    "UPI"),
               ],
             ),
-          ),
+          ],
+        ),
+      ),
     );
   }
 }

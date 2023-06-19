@@ -8,6 +8,7 @@ class SelectBank extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       //appBar: AppBar(title: const Text('Page 1')),
       body: SizedBox(
@@ -15,9 +16,10 @@ class SelectBank extends StatelessWidget {
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: Colors.white,
+          color: Color(0xfffff5f5),
           child: Stack(
             children:[
+
               Positioned.fill(
                 child: Align(
                   alignment: Alignment.topLeft,
@@ -127,7 +129,7 @@ class SelectBank extends StatelessWidget {
                             child: Text(
                               "Enter expiration date:",
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Color(0xfffff5f5),
                                 fontSize: 18,
                                 fontFamily: "Montserrat",
                                 fontWeight: FontWeight.w700,
@@ -143,7 +145,7 @@ class SelectBank extends StatelessWidget {
                             child: Text(
                               "Upload database of recipients:",
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Color(0xfffff5f5),
                                 fontSize: 18,
                                 fontFamily: "Montserrat",
                                 fontWeight: FontWeight.w700,
@@ -159,7 +161,7 @@ class SelectBank extends StatelessWidget {
                             height: 35,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(25),
-                              color: Colors.white,
+                              color: Color(0xfffff5f5),
                             ),
                           ),
                         ),
@@ -171,7 +173,7 @@ class SelectBank extends StatelessWidget {
                             height: 35,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(25),
-                              color: Colors.white,
+                              color: Color(0xfffff5f5),
                             ),
                           ),
                         ),
@@ -202,7 +204,7 @@ class SelectBank extends StatelessWidget {
                             height: 35,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(25),
-                              color: Colors.white,
+                              color: Color(0xfffff5f5),
                             ),
                           ),
                         ),
@@ -241,7 +243,7 @@ class SelectBank extends StatelessWidget {
                                   offset: Offset(0, 4),
                                 ),
                               ],
-                              color: Colors.white,
+                              color: Color(0xfffff5f5),
                             ),
                           ),
                         ),
@@ -282,7 +284,7 @@ class SelectBank extends StatelessWidget {
                             child: Text(
                               "PAY",
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Color(0xfffff5f5),
                                 fontSize: 24,
                                 fontFamily: "Montserrat",
                                 fontWeight: FontWeight.w700,

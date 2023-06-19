@@ -35,38 +35,22 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
 
   cupertino_icons: ^1.0.2
-  awesome_dialog: ^3.0.2
-  url_launcher: ^6.1.10
-  firebase_auth: ^4.0.2
-  cloud_functions: ^4.0.12
-  cloud_firestore: ^4.0.2
-  firebase_core: ^2.1.0
-  provider: ^6.0.4
-  file_picker: ^4.1.3
-  firebase_storage: ^11.0.3
-  flutter_document_picker: ^5.1.0
-  firebase_database: ^10.0.3
-  flutter_email_sender: ^5.2.0
+  awesome_dialog: ^3.1.0
+  firebase_auth: ^4.6.3
+  cloud_firestore: ^4.8.0
+  firebase_core: ^2.14.0
+  firebase_storage: ^11.2.2
   pinput: ^2.2.12
-  advance_pdf_viewer: ^2.0.1
-  pdf: ^3.8.4
-  image_picker: ^0.8.6+4
-  image_cropper: ^3.0.1
-  syncfusion_flutter_pdf: ^20.3.52
-  firebase_messaging: ^14.1.1
-  flutter_local_notifications: ^12.0.3+1
-  firebase_analytics: ^10.0.7
-  google_sign_in: ^5.4.2
-  email_auth: ^1.0.0
-  firebase_remote_config: ^3.0.0
-  awesome_notifications: ^0.7.4+1
-  dio: ^5.0.1
-  path_provider: ^2.0.13
-  open_file: ^3.2.1
-  font_awesome_flutter: ^10.1.0
-  flutter_rating_bar: ^4.0.1
-  intl: ^0.17.0
-  animations: ^2.0.3
+  fluttertoast: ^8.2.2
+  passcode_screen: ^2.0.1
+  file_picker:
+  flutter_screen_lock: ^9.0.1
+  local_auth: ^2.1.6
+  shared_preferences: ^2.1.2
+  get: ^4.6.5
+  otp_text_field: ^1.1.3
+  csv:
+
 
 
 dev_dependencies:
@@ -111,6 +95,7 @@ flutter:
     - Assets/Images/deposit.png
     - Assets/Images/E Rupi icon.png
     - Assets/Images/hind e pay white logo.png
+    - Assets/data.csv
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

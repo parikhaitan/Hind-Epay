@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hind_e_pay/reusable_widget.dart';
 import 'RegisterSP.dart';
+import 'RegisterUser.dart';
 import 'VoucherInfoSP.dart';
 
 
@@ -52,17 +53,17 @@ class _RegisterChoice extends State<RegisterChoice> {
                 SizedBox(
                   child: MaterialButton(
                       padding: EdgeInsets.all(4.0),
-                      textColor: Colors.white,
+                      textColor: Color(0xfffff5f5),
                       splashColor: Colors.greenAccent,
                       elevation: 8.0,
                       child: reusableRowContainerBG(MediaQuery.of(context).size.height, MediaQuery.of(context).size.width, "USER", Icon(
                           CupertinoIcons.person,
                           size: 40,
-                          color: Colors.white)),
+                          color: Color(0xfffff5f5))),
                       // ),
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) =>  Upload())); ///bank option page
+                            builder: (context) =>  RegisterUser())); ///bank option page
                       }
                   ),
                 ),
@@ -71,14 +72,14 @@ class _RegisterChoice extends State<RegisterChoice> {
                 SizedBox(
                   child: MaterialButton(
                       padding: EdgeInsets.all(4.0),
-                      textColor: Colors.white,
+                      textColor: Color(0xfffff5f5),
                       splashColor: Colors.greenAccent,
                       elevation: 8.0,
                       child: reusableRowContainerBG(MediaQuery.of(context).size.height, MediaQuery.of(context).size.width,
                           "SEVICE PROVIDER", Icon(
                               CupertinoIcons.building_2_fill,
                               size: 40,
-                              color: Colors.white)),
+                              color: Color(0xfffff5f5))),
                       // ),
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(

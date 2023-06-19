@@ -44,7 +44,7 @@ class _RegisterSP extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: reusableAppBarOpp(MediaQuery.of(context).size.width, "REGISTER", context),
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xfffff5f5),
       body:Container(
     child:
       SingleChildScrollView(
@@ -79,7 +79,7 @@ class _RegisterSP extends State<MainPage> {
                             children: [
                               SizedBox(height: 10),
                               SizedBox(width: 10),
-                              Icon(Icons.account_balance_sharp, size: 45,color: Colors.white),
+                              Icon(Icons.account_balance_sharp, size: 45,color: Color(0xfffff5f5)),
                               SizedBox(width: 10),
                               // image: ,
                               Flexible(
@@ -89,7 +89,7 @@ class _RegisterSP extends State<MainPage> {
                                     style: TextStyle(
                                       fontSize: 18.0,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.white,
+                                      color: Color(0xfffff5f5),
                                     )),
                               ),
                               SizedBox(width: 3),

@@ -48,7 +48,7 @@ class _MainPageState extends State<MainPage> {
 
     return Scaffold(
        appBar: reusableAppBarOpp(MediaQuery.of(context).size.width, "Bank Details", context),
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xfffff5f5),
       body: Container(
         alignment: Alignment.topCenter,
     // child: SingleChildScrollView(
@@ -87,7 +87,7 @@ class _MainPageState extends State<MainPage> {
                               children: [
                                 SizedBox(height: 10),
                                 SizedBox(width: 10),
-                                Icon(Icons.account_balance_sharp, size: 45,color: Colors.white),
+                                Icon(Icons.account_balance_sharp, size: 45,color: Color(0xfffff5f5)),
                                 SizedBox(width: 10),
                                // image: ,
                                 Flexible(
@@ -100,7 +100,7 @@ class _MainPageState extends State<MainPage> {
 
                                         fontSize: 18.0,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.white,
+                                        color: Color(0xfffff5f5),
                                       )),
                                 ),
                                 SizedBox(width: 3),
@@ -155,7 +155,7 @@ class _MainPageState extends State<MainPage> {
                                           style: TextStyle(
                                             fontSize: 22.0,
                                             fontWeight: FontWeight.bold,
-                                            color: Colors.white,
+                                            color: Color(0xfffff5f5),
                                           )
                                       ),
                                     ),
@@ -166,7 +166,7 @@ class _MainPageState extends State<MainPage> {
                                           style: TextStyle(
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.bold,
-                                            color: Colors.white,
+                                            color: Color(0xfffff5f5),
                                           )
                                       ),
                                     ),
@@ -174,7 +174,7 @@ class _MainPageState extends State<MainPage> {
                                       width: 0.8 * MediaQuery.of(context).size.width,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(25),
-                                        color: Colors.white,
+                                        color:Color(0xfffff5f5),
                                       ),
                                       child: TextField(
                                         controller: _orgNameController,
@@ -192,7 +192,7 @@ class _MainPageState extends State<MainPage> {
                                           style: TextStyle(
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.bold,
-                                            color: Colors.white,
+                                            color: Color(0xfffff5f5),
                                           )
                                       ),
                                     ),
@@ -200,7 +200,7 @@ class _MainPageState extends State<MainPage> {
                                       width: 0.8 * MediaQuery.of(context).size.width,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(25),
-                                        color: Colors.white,
+                                        color: Color(0xfffff5f5),
                                       ),
                                       child: TextField(
                                         controller: _AccNumController,
@@ -218,7 +218,7 @@ class _MainPageState extends State<MainPage> {
                                           style: TextStyle(
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.bold,
-                                            color: Colors.white,
+                                            color:Color(0xfffff5f5),
                                           )
                                       ),
                                     ),
@@ -226,7 +226,7 @@ class _MainPageState extends State<MainPage> {
                                       width: 0.8 * MediaQuery.of(context).size.width,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(25),
-                                        color: Colors.white,
+                                        color: Color(0xfffff5f5),
                                       ),
                                       child: TextField(
                                         controller: _IFSCCodeController,
@@ -244,7 +244,7 @@ class _MainPageState extends State<MainPage> {
                                           style: TextStyle(
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.bold,
-                                            color: Colors.white,
+                                            color: Color(0xfffff5f5),
                                           )
                                       ),
                                     ),
@@ -252,7 +252,7 @@ class _MainPageState extends State<MainPage> {
                                       width: 0.8 * MediaQuery.of(context).size.width,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(25),
-                                        color: Colors.white,
+                                        color: Color(0xfffff5f5),
                                       ),
                                       child: TextField(
                                         controller: _GSTINController,

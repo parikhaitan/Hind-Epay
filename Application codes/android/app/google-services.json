@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "180840255679",
+    "project_id": "hind-epay",
+    "storage_bucket": "hind-epay.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180840255679:android:4ce73ea80b0b593245760a",
+        "android_client_info": {
+          "package_name": "com.hindepay.hind_e_pay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "180840255679-l9ip8skuu0rfbmr7qldugkmed3vlfibb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGHgbJwUj1C33eghlnP2B01yA4vFD8fF4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "180840255679-l9ip8skuu0rfbmr7qldugkmed3vlfibb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

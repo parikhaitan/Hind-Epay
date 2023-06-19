@@ -42,7 +42,9 @@ class _MainPageState extends State<MainPage> {
     //final fileName = file != null ? basename(file!.path) : 'No File Selected';
 
     return Scaffold(
-      appBar: reusableAppBar(MediaQuery.of(context).size.width,'Generate Voucher', context ),
+      appBar: reusableAppBar(MediaQuery.of(context).size.width,"Generate Voucher", context ),
+      resizeToAvoidBottomInset: true,
+      backgroundColor: Color(0xfff16f00),
       body: Container(
         alignment: Alignment.topCenter,
         decoration: BoxDecoration(
@@ -85,7 +87,7 @@ class _MainPageState extends State<MainPage> {
                                 offset: Offset(0, 4),
                               ),
                             ],
-                            color: Colors.white,
+                            color: Color(0xfffff5f5),
                           ),
                           child:Column(
                             children: [
@@ -108,7 +110,7 @@ class _MainPageState extends State<MainPage> {
                                 width: 0.8* MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(25),
-                                  color: Colors.white,
+                                  color: Color(0xfffff5f5),
                                 ),
                                 child: TextField(
                                   controller: _serviceNameController,
@@ -140,7 +142,7 @@ class _MainPageState extends State<MainPage> {
                                     offset: Offset(0, 4),
                                   ),
                                 ],
-                                color: Colors.white,
+                                color: Color(0xfffff5f5),
                               ),
                               child:Column(
                                 children: [
@@ -160,7 +162,7 @@ class _MainPageState extends State<MainPage> {
                                     width: 0.37 * MediaQuery.of(context).size.width,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(25),
-                                      color: Colors.white,
+                                      color: Color(0xfffff5f5),
                                     ),
                                     child: TextField(
                                       controller: _voucherAmountController,
@@ -185,7 +187,7 @@ class _MainPageState extends State<MainPage> {
                               height: 0.17 * MediaQuery.of(context).size.height,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(25),
-                                color: Colors.white,
+                                color: Color(0xfffff5f5),
                               ),
                               child:Column(
                                 children: [
@@ -204,7 +206,7 @@ class _MainPageState extends State<MainPage> {
                                     width:0.37 * MediaQuery.of(context).size.width,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(25),
-                                      color: Colors.white,
+                                      color: Color(0xfffff5f5),
                                     ),
                                     child: TextField(
                                       controller: _expirationDateController,
@@ -236,7 +238,7 @@ class _MainPageState extends State<MainPage> {
                                 offset: Offset(0, 4),
                               ),
                             ],
-                            color: Colors.white,
+                            color: Color(0xfffff5f5),
                           ),
                           child:Column(
                             children: [
@@ -255,7 +257,7 @@ class _MainPageState extends State<MainPage> {
                                 width: 0.9* MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(25),
-                                  color: Colors.white,
+                                  color:Color(0xfffff5f5),
                                 ),
                               ),
                             ],
