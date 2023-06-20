@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 Container reusableRowContainer(double h, double w, Image im, String t) {
   return Container(
@@ -147,6 +148,8 @@ AppBar reusableAppBar(double w, String title, BuildContext context) {
   );
 }
 
+
+
 Container ReusableTextFieldWithTitle(BuildContext context, String title,
     TextEditingController textEditingController, String hintText) {
   return Container(
@@ -238,6 +241,30 @@ Container ReusableTextFieldWithTitleForm(
       ],
     ),
   );
+}
+
+AppBar reusabbleAppBarToCloseApp(String title){
+  return AppBar(
+    leading: IconButton(
+      onPressed: () {
+        SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+
+      },
+      icon: Icon(
+        Icons.arrow_back_ios_rounded,
+        color: Colors.black,
+      ),
+    ),
+    title: Text(title,
+      style: TextStyle(
+          fontSize: 30,
+          color: Color(0xfffff5f5),
+          fontWeight: FontWeight.bold,
+          fontFamily: 'BebasNeue'),),
+    flexibleSpace: Image(
+        image: AssetImage('Assets/Images/bg screen.png'), fit: BoxFit.cover),
+  );
+
 }
 
 AppBar reusableAppBarOpp(double w, String title, BuildContext context) {

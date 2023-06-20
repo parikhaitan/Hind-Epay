@@ -2,9 +2,10 @@
 // import 'package:backend/home/homeUser/homeUser.dart';
 // import 'package:backend/randomFiles/random.dart';
 // import 'package:backend/startup/Register/registerScreen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:hind_e_pay/Verify.dart';
+import 'package:hind_e_pay/LoginVerifyUser.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginUser extends StatefulWidget {
@@ -115,18 +116,35 @@ class _LoginUser extends State<LoginUser> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     onPressed: () async {
-                      await FirebaseAuth.instance.verifyPhoneNumber(
-                        phoneNumber: '${countryController.text + phone}',
-                        verificationCompleted:
-                            (PhoneAuthCredential credential) {},
-                        verificationFailed: (FirebaseAuthException e) {},
-                        codeSent: (String verificationId, int? resendToken) {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const MyVerify()));
-                          LoginUser.verify = verificationId;
-                        },
-                        codeAutoRetrievalTimeout: (String verificationId) {},
-                      );
+                      final String number = '${"+91" + phone}';
+
+                      if(await checkPhoneNumberRegistered(number, "users")==false){
+
+                        print("Number not registered! Please Create Account.");
+                        const snackBar = SnackBar(
+                          content: Text("Number not registered! Please Create Account" ),
+                          backgroundColor: Colors.red,
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+                      }
+                      else {
+                        await FirebaseAuth.instance.verifyPhoneNumber(
+                          phoneNumber: number,
+                          verificationCompleted:
+                              (PhoneAuthCredential credential) {},
+                          verificationFailed: (FirebaseAuthException e) {},
+                          codeSent: (String verificationId, int? resendToken) {
+                            //Navigator.pushNamed(context, 'verify');
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => LoginVerifyUser()));
+                            LoginUser.verify = verificationId;
+                          },
+                          codeAutoRetrievalTimeout: (String verificationId) {},
+                        );
+                      }
+
+                      //
 
                       //
                     },
@@ -145,7 +163,7 @@ class _LoginUser extends State<LoginUser> {
                             borderRadius: BorderRadius.circular(10))),
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const MyVerify()));
+                          builder: (context) => const LoginVerifyUser()));
 
                       //
                     },
@@ -156,5 +174,26 @@ class _LoginUser extends State<LoginUser> {
         ),
       ),
     );
+
+  }
+  Future <bool> checkPhoneNumberRegistered(String phoneNumber, String collection) async {
+    FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+
+
+    QuerySnapshot querySnapshot = await _firestore
+        .collection(collection)
+        .where('Phone No', isEqualTo: phoneNumber)
+        .get();
+
+    if (querySnapshot.docs.isNotEmpty) {
+      // Phone number is already registered
+      print('Phone number is already registered.');
+      return true;
+    } else {
+      // Phone number is not registered
+      print('Phone number is not registered.');
+      return false;
+    }
   }
 }

@@ -76,7 +76,7 @@ class _RegisterChoice extends State<RegisterChoice> {
                       splashColor: Colors.greenAccent,
                       elevation: 8.0,
                       child: reusableRowContainerBG(MediaQuery.of(context).size.height, MediaQuery.of(context).size.width,
-                          "SEVICE PROVIDER", Icon(
+                          "SERVICE PROVIDER", Icon(
                               CupertinoIcons.building_2_fill,
                               size: 40,
                               color: Color(0xfffff5f5))),

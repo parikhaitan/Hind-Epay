@@ -4,6 +4,12 @@ import 'package:hind_e_pay/SplashScreen.dart';
 
 import 'Backend/firebase_config.dart';
 
+import 'Backend/passCodeSetterSP.dart';
+import 'Backend/passCodeSetterUser.dart';
+import 'BankDetails.dart';
+import 'VoucherInfoDisha.dart';
+import 'VoucherInfoSP.dart';
+
 
 void main() async {
    WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +43,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(),
+      home: PasscodeSetterUser(),
     );
   }
 }

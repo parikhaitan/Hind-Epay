@@ -281,8 +281,10 @@ class _MainPageState extends State<MainPage> {
                       // Navigator.of(context, rootNavigator: true).pop();
                       // },
                       // )..show(),
+
+
                       Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) =>  PayementScreen())), //
+                      builder: (context) =>  ErupiTransactionApp())), //
                       },
                       label: Text('Pay'),
                       //   icon: Icons.attach_file,

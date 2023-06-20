@@ -1,6 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:hind_e_pay/Verify.dart';
+import 'package:hind_e_pay/LoginVerifyUser.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginSP extends StatefulWidget {
@@ -108,18 +109,34 @@ class _LoginSP extends State<LoginSP> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     onPressed: () async {
-                      await FirebaseAuth.instance.verifyPhoneNumber(
-                        phoneNumber: '${countryController.text + phone}',
-                        verificationCompleted:
-                            (PhoneAuthCredential credential) {},
-                        verificationFailed: (FirebaseAuthException e) {},
-                        codeSent: (String verificationId, int? resendToken) {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const MyVerify()));
-                          LoginSP.verify = verificationId;
-                        },
-                        codeAutoRetrievalTimeout: (String verificationId) {},
-                      );
+                      final String number = '${"+91" + phone}';
+
+                      if(await checkPhoneNumberRegistered(number, "service-provider")==false){
+                        print("Number not registered! Please Create Account.");
+                        const snackBar = SnackBar(
+                          content: Text("Number not registered! Please Create Account."),
+                          backgroundColor: Colors.red,
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+                      }
+                      else {
+                        await FirebaseAuth.instance.verifyPhoneNumber(
+                          phoneNumber: number,
+                          verificationCompleted:
+                              (PhoneAuthCredential credential) {},
+                          verificationFailed: (FirebaseAuthException e) {},
+                          codeSent: (String verificationId, int? resendToken) {
+                            //Navigator.pushNamed(context, 'verify');
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => LoginVerifyUser()));
+                            LoginSP.verify = verificationId;
+                          },
+                          codeAutoRetrievalTimeout: (String verificationId) {},
+                        );
+                      }
+
+                      //
                     },
                     child: Text("Send the code")),
               ),
@@ -136,7 +153,7 @@ class _LoginSP extends State<LoginSP> {
                             borderRadius: BorderRadius.circular(10))),
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const MyVerify()));
+                          builder: (context) => const LoginVerifyUser()));
                     },
                     child: Text("Back")),
               )
@@ -145,5 +162,26 @@ class _LoginSP extends State<LoginSP> {
         ),
       ),
     );
+
+  }
+  Future <bool> checkPhoneNumberRegistered(String phoneNumber, String collection) async {
+    FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+
+
+    QuerySnapshot querySnapshot = await _firestore
+        .collection(collection)
+        .where('Phone No', isEqualTo: phoneNumber)
+        .get();
+
+    if (querySnapshot.docs.isNotEmpty) {
+      // Phone number is already registered
+      print('Phone number is already registered.');
+      return true;
+    } else {
+      // Phone number is not registered
+      print('Phone number is not registered.');
+      return false;
+    }
   }
 }

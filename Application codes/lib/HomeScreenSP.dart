@@ -43,7 +43,7 @@ class _HomeScreen extends State<HomeScreenSP> {
                   InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => ErupiTransactionApp()// MyApp()
+                          builder: (context) => SPVouchers()// MyApp()
                       ));
                     },
                     child:  reusableRowContainerBG(
