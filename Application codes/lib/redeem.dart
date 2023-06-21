@@ -3,7 +3,8 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
-import 'viewVoucher.dart';
+import 'User/passCodeSetterUser.dart';
+import 'User/viewVoucher.dart';
 
 class Redeem extends StatefulWidget {
   const Redeem({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class Redeem extends StatefulWidget {
 }
 
 class _RedeemState extends State<Redeem> {
+  final id = PasscodeSetterUser.id;
   final FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
@@ -40,17 +42,52 @@ class _RedeemState extends State<Redeem> {
       }
 
       CollectionReference user_db =
-      FirebaseFirestore.instance.collection('User Vouchers');
+      FirebaseFirestore.instance.collection('users');
 
-      QuerySnapshot user_snapshot =
-      await user_db.where('Nid', isEqualTo: ViewVouchers.code).get();
+      QuerySnapshot user_snapshot = await FirebaseFirestore.instance
+          .collection("users")
+          .doc(id)
+          .collection("User_Vouchers")
+          .where('Nid', isEqualTo: ViewVouchers.code)
+          .get();
       for (var document in user_snapshot.docs) {
         String documentId = document.id;
-        await user_db.doc(documentId).update({
+        await user_db
+            .doc(id)
+            .collection("User_Vouchers")
+            .doc(documentId)
+            .update({
           'Nid': 'Null',
         });
       }
     }
+    //           (doc) => AwesomeDialog(
+    //         context: context,
+    //         dialogType: DialogType.success,
+    //         animType: AnimType.bottomSlide,
+    //         showCloseIcon: true,
+    //         title: "Success",
+    //         desc: "Voucher has been redeemed.",
+    //         btnOkOnPress: () {},
+    //       )..show(),
+    //       onError: (e) => print("Error redeeming$e"),
+    //     );
+    //   }
+    //
+    //   CollectionReference user_db =
+    //   FirebaseFirestore.instance.collection('User Vouchers');
+    //
+    //   QuerySnapshot user_snapshot =
+    //   await user_db.where('Nid', isEqualTo: ViewVouchers.code).get();
+    //   for (var document in user_snapshot.docs) {
+    //     String documentId = document.id;
+    //     await user_db.doc(documentId).update({
+    //       'Nid': 'Null',
+    //     });
+    //   }
+    // }
+    //
+
 
     final defaultPinTheme = PinTheme(
       width: 56,

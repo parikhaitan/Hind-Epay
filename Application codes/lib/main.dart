@@ -1,14 +1,17 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:hind_e_pay/SplashScreen.dart';
+import 'package:hind_e_pay/ServiceProvider/HomeScreenSP.dart';
+import 'package:hind_e_pay/CommonScreens/SplashScreen.dart';
 
 import 'Backend/firebase_config.dart';
 
-import 'Backend/passCodeSetterSP.dart';
-import 'Backend/passCodeSetterUser.dart';
-import 'BankDetails.dart';
-import 'VoucherInfoDisha.dart';
-import 'VoucherInfoSP.dart';
+import 'ServiceProvider/passCodeSetterSP.dart';
+import 'User/ERupiHome.dart';
+import 'User/passCodeSetterUser.dart';
+import 'ServiceProvider/BankDetails.dart';
+import 'ServiceProvider/GenrateVouchers.dart';
+import 'ServiceProvider/ViewHistory.dart';
+import 'ServiceProvider/VoucherInfoSP.dart';
 
 
 void main() async {
@@ -38,12 +41,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Hind E pay',
       theme: ThemeData(
 
         primarySwatch: Colors.blue,
       ),
-      home: PasscodeSetterUser(),
+      home: SplashScreen(),
     );
   }
 }
