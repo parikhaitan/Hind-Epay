@@ -18,3 +18,8 @@ Security and Privacy: The app's emphasis on security and privacy is another dist
 
 ## Specific Use Case
 The innovative app empowering organizations to provide scholarships for education to children in need and revolutionizing the way these scholarships are redeemed.
+
+
+
+![Hind epay workflow](https://github.com/parikhaitan/Hind-Epay/assets/108686676/d2258143-07b1-4ad8-a863-91709c8f5398)
+
