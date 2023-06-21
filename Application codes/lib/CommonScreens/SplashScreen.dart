@@ -19,7 +19,7 @@ class _SplashScreen extends State<SplashScreen> {
     super.initState();
     isLogin(context);
   }
-
+  //
   // _navigatetohome() async {
   //   await Future.delayed(Duration(milliseconds: 3000), () {});
   //   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>SecondScreen()));
@@ -42,7 +42,7 @@ class _SplashScreen extends State<SplashScreen> {
               ),
               color: Color(0xfffff5f5),
               image: DecorationImage(
-                image: AssetImage('assets/Hind e-pay logo.png'),
+                image: AssetImage('Assets/Images/Hind e-pay logo.png'),
                 scale: 0.1,
                 alignment: Alignment.center,
               ),
@@ -61,28 +61,29 @@ class _SplashScreen extends State<SplashScreen> {
     var sharedPref = await SharedPreferences.getInstance();
     var isLoggedIn = sharedPref.getBool(SplashScreen.KEYLOGIN);
 
-    Timer(Duration(seconds: 2), () {
-      if (isLoggedIn != null) {
-        if (isLoggedIn) {
-          Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SelectRole(),
-              ));
-        } else {
-          Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SelectRole(),
-              ));
-        }
-      } else {
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => SelectRole(),
-            ));
-      }
+    Timer(Duration(seconds: 3), () {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>SelectRole()));
+      // if (isLoggedIn != null) {
+      //   if (isLoggedIn) {
+      //     Navigator.pushReplacement(
+      //         context,
+      //         MaterialPageRoute(
+      //           builder: (context) => SelectRole(),
+      //         ));
+      //   } else {
+      //     Navigator.pushReplacement(
+      //         context,
+      //         MaterialPageRoute(
+      //           builder: (context) => SelectRole(),
+      //         ));
+      //   }
+      // } else {
+      //   Navigator.pushReplacement(
+      //       context,
+      //       MaterialPageRoute(
+      //         builder: (context) => SelectRole(),
+      //       ));
+      // }
     });
   }
 }

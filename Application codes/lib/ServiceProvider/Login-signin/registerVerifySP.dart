@@ -70,7 +70,7 @@ class _RegisterVerifySPState extends State<RegisterVerifySP> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'Assets/Images/hind e pay white logo.png',
+                'Assets/Images/Hind e-pay logo.png',
                 width: 400,
                 height: 350,
               ),

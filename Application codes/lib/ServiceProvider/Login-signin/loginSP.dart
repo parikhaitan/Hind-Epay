@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hind_e_pay/User/Login-signin/LoginVerifyUser.dart';
 
+import 'loginVerifySP.dart';
+
 class LoginSP extends StatefulWidget {
   const LoginSP({Key? key}) : super(key: key);
   static String verify = "";
@@ -131,7 +133,7 @@ class _LoginSP extends State<LoginSP> {
                           codeSent: (String verificationId, int? resendToken) {
                             //Navigator.pushNamed(context, 'verify');
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => LoginVerifyUser()));
+                                builder: (context) => LoginVerifySP()));
                             LoginSP.verify = verificationId;
                           },
                           codeAutoRetrievalTimeout: (String verificationId) {},
