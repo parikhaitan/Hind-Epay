@@ -1,11 +1,11 @@
+///This is the code for home screen of service provider -- Which will have options to generate voucher that needs to be shared with the users
+/// and View the history of previously generated vouchers
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hind_e_pay/CommonScreens/reusable_widget.dart';
-import 'BankDetails.dart';
-import '../CSVImport.dart';
 import 'GenrateVouchers.dart';
 import 'ViewHistory.dart';
-import 'VoucherInfoSP.dart';
 
 class HomeScreenSP extends StatefulWidget {
   const HomeScreenSP({Key? key}) : super(key: key);
@@ -20,10 +20,10 @@ class _HomeScreen extends State<HomeScreenSP> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-      reusableAppBarOppLogOut(MediaQuery.of(context).size.width, "Home", context),
+      appBar: reusableAppBarOppLogOut(
+          MediaQuery.of(context).size.width, "Home", context),
       resizeToAvoidBottomInset: true,
-      backgroundColor:Color(0xfffff5f5),
+      backgroundColor: Color(0xfffff5f5),
       body: SingleChildScrollView(
         child: Container(
           child: Row(
@@ -44,69 +44,29 @@ class _HomeScreen extends State<HomeScreenSP> {
                   InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SPVouchers()// MyApp()
-                      ));
+                          builder: (context) => SPVouchers() // MyApp()
+                          ));
                     },
-                    child:  reusableRowContainerBG(
+                    child: reusableRowContainerBG(
                         MediaQuery.of(context).size.height,
                         MediaQuery.of(context).size.width,
                         "GENERATE E-RUPI VOUCHER",
                         Icon(CupertinoIcons.plus_square_fill_on_square_fill,
                             size: 40, color: Color(0xfffff5f5))),
                   ),
-                  // SizedBox(
-                  //   child: MaterialButton(
-                  //       padding: EdgeInsets.all(4.0),
-                  //       textColor: Colors.white,
-                  //       splashColor: Colors.greenAccent,
-                  //       elevation: 8.0,
-                  //       child: reusableRowContainerBG(
-                  //           MediaQuery.of(context).size.height,
-                  //           MediaQuery.of(context).size.width,
-                  //           "GENERATE E-RUPI VOUCHER",
-                  //           Icon(CupertinoIcons.plus_square_fill_on_square_fill,
-                  //               size: 40, color: Colors.white)),
-                  //       // ),
-                  //       onPressed: () {
-                  //         Navigator.of(context).push(MaterialPageRoute(
-                  //             builder: (context) => Upload()));
-                  //
-                  //         ///bank option page
-                  //       }),
-                  // ),
                   SizedBox(height: 0.03 * MediaQuery.of(context).size.height),
                   InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => ViewVouchers()));
                     },
-                    child:   reusableRowContainerBG(
+                    child: reusableRowContainerBG(
                         MediaQuery.of(context).size.height,
                         MediaQuery.of(context).size.width,
                         "VIEW HISTORY",
                         Icon(CupertinoIcons.arrow_right_square_fill,
                             size: 40, color: Color(0xfffff5f5))),
                   ),
-                  // SizedBox(
-                  //   child: MaterialButton(
-                  //       padding: EdgeInsets.all(4.0),
-                  //       textColor: Colors.white,
-                  //       splashColor: Colors.greenAccent,
-                  //       elevation: 8.0,
-                  //       child: reusableRowContainerBG(
-                  //           MediaQuery.of(context).size.height,
-                  //           MediaQuery.of(context).size.width,
-                  //           "VIEW HISTORY",
-                  //           Icon(CupertinoIcons.arrow_right_square_fill,
-                  //               size: 40, color: Colors.white)),
-                  //       // ),
-                  //       onPressed: () {
-                  //         Navigator.of(context).push(MaterialPageRoute(
-                  //             builder: (context) => Upload()));
-                  //
-                  //         ///bank option page
-                  //       }),
-                  // ),
                   SizedBox(height: 0.03 * MediaQuery.of(context).size.height),
                 ],
               ),

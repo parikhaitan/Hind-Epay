@@ -1,8 +1,10 @@
+///This files contains the code for OTP verification post entering login credentials
+
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hind_e_pay/ServiceProvider/HomeScreenSP.dart';
 import 'package:pinput/pinput.dart';
-
 import 'loginSP.dart';
 
 class LoginVerifySP extends StatefulWidget {

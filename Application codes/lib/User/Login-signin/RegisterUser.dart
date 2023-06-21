@@ -1,3 +1,4 @@
+///This is the register screen for the users who have not registered previosly
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -5,39 +6,29 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:hind_e_pay/CommonScreens/reusable_widget.dart';
-
 import '../../Backend/RegisterController.dart';
 import 'registerVerifyUser.dart';
-
 
 class RegisterUser extends StatelessWidget {
   static final String title = 'REGISTER';
   static String verify = "";
-
-
-  // static TextEditingController userName = TextEditingController();
-   static TextEditingController phoneNoCode = TextEditingController();
-  // static TextEditingController emailId = TextEditingController();
-
+  static TextEditingController phoneNoCode = TextEditingController();
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-
-    debugShowCheckedModeBanner: false,
-    title: title,
-    home: RegisterUserMainPage(),
-  );
+        debugShowCheckedModeBanner: false,
+        title: title,
+        home: RegisterUserMainPage(),
+      );
 }
 
 class RegisterUserMainPage extends StatefulWidget {
   @override
   _RegisterUser createState() => _RegisterUser();
-
 }
 
 class _RegisterUser extends State<RegisterUserMainPage> {
   final controller = Get.put(RegisterController());
-
   final selectedValue = "Government";
   int price = 2;
   bool isuploaded = false;
@@ -50,21 +41,18 @@ class _RegisterUser extends State<RegisterUserMainPage> {
     super.initState();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     var phone = "";
     return Scaffold(
-      appBar: reusableAppBarOpp(MediaQuery.of(context).size.width, "REGISTER", context),
+      appBar: reusableAppBarOpp(
+          MediaQuery.of(context).size.width, "REGISTER", context),
       backgroundColor: Colors.white,
-      body:Container(
-        child:
-        SingleChildScrollView(
+      body: Container(
+        child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          child:  Container(
+          child: Container(
             width: MediaQuery.of(context).size.width,
-            // height: (0.8 * MediaQuery.of(context).size.height),
             alignment: Alignment.topCenter,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -79,124 +67,135 @@ class _RegisterUser extends State<RegisterUserMainPage> {
                           height: 0.2 * MediaQuery.of(context).size.height,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(0), topRight: Radius.circular(0), bottomLeft: Radius.circular(0), bottomRight: Radius.circular(0), ),
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(0),
+                              topRight: Radius.circular(0),
+                              bottomLeft: Radius.circular(0),
+                              bottomRight: Radius.circular(0),
+                            ),
                             color: Color(0xfffff5f5),
                             image: DecorationImage(
-                              image: AssetImage('Assets/Images/Hind e-pay logo.png'),
+                              image: AssetImage(
+                                  'Assets/Images/Hind e-pay logo.png'),
                               scale: 0.05,
                               alignment: Alignment.center,
                             ),
-                          ),//     color: Color(0xfffff5f5),
+                          ), //     color: Color(0xfffff5f5),
                         ),
                         // SizedBox(height: 0.02 * MediaQuery.of(context).size.height),
-                        ReusableTextFieldWithTitle(context, "User Name", controller.userName,"ABC"),
-                      ],
-                    ),SizedBox(height: 0.02 * MediaQuery.of(context).size.height),
-                    Column(
-                      children: [
-
-                        ///////////////
-                    Container(
-                    width: 0.9 * MediaQuery.of(context).size.width,
-        height: 0.15 * MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('Assets/Images/bg screen.png'), fit: BoxFit.cover),
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Color(0x3f000000),
-              blurRadius: 10,
-              offset: Offset(0, 4),
-            ),
-          ],
-        ),
-        child: Column(
-          children: [
-            SizedBox(height: 8),
-            Flexible(
-              child: Text("Phone Number",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xfffff5f5),
-                  )),
-            ),
-            Container(
-              width: 0.8 * MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                color: Color(0xfffff5f5),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 10,
-                  ),
-                  SizedBox(
-                    width: 40,
-                    child: TextField(
-                      //  controller: phoneNoCode,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "+91"
-                      ),
-                    ),
-                  ),
-                  Text(
-                    "|",
-                    style: TextStyle(fontSize: 33, color: Colors.grey),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                      child: TextField(
-                        controller: controller.phoneNo,
-                        keyboardType: TextInputType.phone,
-                        onChanged: (value) {
-                          phone = value;
-                        },
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Phone Number",
-                        ),
-                      ))
-                ],
-              ),
-            ),
-            SizedBox(height: 8),
-          ],
-        ),
-      ),
-
-
-                       // ReusableTextFieldWithTitle(context, "Phone Number",controller.phoneNo, "XXXXXXXXXX"),
+                        ReusableTextFieldWithTitle(
+                            context, "User Name", controller.userName, "ABC"),
                       ],
                     ),
                     SizedBox(height: 0.02 * MediaQuery.of(context).size.height),
                     Column(
                       children: [
-
-                        ReusableTextFieldWithTitle(context,  "EMAIL ID", controller.emailId,"abc@gmail.com"),
+                        Container(
+                          width: 0.9 * MediaQuery.of(context).size.width,
+                          height: 0.15 * MediaQuery.of(context).size.height,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image:
+                                    AssetImage('Assets/Images/bg screen.png'),
+                                fit: BoxFit.cover),
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x3f000000),
+                                blurRadius: 10,
+                                offset: Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            children: [
+                              SizedBox(height: 8),
+                              Flexible(
+                                child: Text("Phone Number",
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xfffff5f5),
+                                    )),
+                              ),
+                              Container(
+                                width: 0.8 * MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(25),
+                                  color: Color(0xfffff5f5),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    SizedBox(
+                                      width: 40,
+                                      child: TextField(
+                                        //  controller: phoneNoCode,
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                            border: InputBorder.none,
+                                            hintText: "+91"),
+                                      ),
+                                    ),
+                                    Text(
+                                      "|",
+                                      style: TextStyle(
+                                          fontSize: 33, color: Colors.grey),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Expanded(
+                                        child: TextField(
+                                      controller: controller.phoneNo,
+                                      keyboardType: TextInputType.phone,
+                                      onChanged: (value) {
+                                        phone = value;
+                                      },
+                                      decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: "Phone Number",
+                                      ),
+                                    ))
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 8),
+                            ],
+                          ),
+                        ),
                       ],
-                    ),SizedBox(height: 0.02 * MediaQuery.of(context).size.height),
+                    ),
+                    SizedBox(height: 0.02 * MediaQuery.of(context).size.height),
+                    Column(
+                      children: [
+                        ReusableTextFieldWithTitle(context, "EMAIL ID",
+                            controller.emailId, "abc@gmail.com"),
+                      ],
+                    ),
+                    SizedBox(height: 0.02 * MediaQuery.of(context).size.height),
                     FloatingActionButton.extended(
                       heroTag: "Done",
                       onPressed: () async {
-                        final String number = '${"+91" + controller.phoneNo.text}';
+                        final String number =
+                            '${"+91" + controller.phoneNo.text}';
                         print(number);
 
-                        if (checkPhoneNumberRegistered(number, "users") == true) {
+                        //Do not registers if the phone number is previously registered
+                        if (checkPhoneNumberRegistered(number, "users") ==
+                            true) {
                           const snackBar = SnackBar(
-                            content: Text('Please login! Phone Number  already registered!'),
+                            content: Text(
+                                'Please login! Phone Number  already registered!'),
                             backgroundColor: Colors.red,
                           );
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                          print("Please login! Phone Number  already registered");
+                          print(
+                              "Please login! Phone Number  already registered");
                         }
                         else {
                           await FirebaseAuth.instance.verifyPhoneNumber(
@@ -204,19 +203,17 @@ class _RegisterUser extends State<RegisterUserMainPage> {
                             verificationCompleted:
                                 (PhoneAuthCredential credential) {},
                             verificationFailed: (FirebaseAuthException e) {},
-                            codeSent: (String verificationId,
-                                int? resendToken) {
+                            codeSent:
+                                (String verificationId, int? resendToken) {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => RegisterVerify()));
                               RegisterUser.verify = verificationId;
                             },
-                            codeAutoRetrievalTimeout: (
-                                String verificationId) {},
+                            codeAutoRetrievalTimeout:
+                                (String verificationId) {},
                           );
                         }
-                      }
-                      ,
-
+                      },
                       label: Text('Verify Details'),
                       backgroundColor: Color(0xff20c215),
                     ),
@@ -241,10 +238,11 @@ class _RegisterUser extends State<RegisterUserMainPage> {
       ),
     );
   }
-  Future <bool> checkPhoneNumberRegistered(String phoneNumber, String collection) async {
+
+  //function to check whether phone number is previously registered is defined here
+  Future<bool> checkPhoneNumberRegistered(
+      String phoneNumber, String collection) async {
     FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
-
 
     QuerySnapshot querySnapshot = await _firestore
         .collection(collection)
@@ -262,126 +260,3 @@ class _RegisterUser extends State<RegisterUserMainPage> {
     }
   }
 }
-
-
-// import 'package:flutter/material.dart';
-// import 'package:hind_e_pay/reusable_widget.dart';
-//
-// class RegisterUser extends StatelessWidget {
-//   static final String title = 'REGISTER';
-//
-//   @override
-//   Widget build(BuildContext context) => MaterialApp(
-//     debugShowCheckedModeBanner: false,
-//     title: title,
-//     home: MainPage(),
-//   );
-// }
-//
-// class MainPage extends StatefulWidget {
-//   @override
-//   _RegisterUser createState() => _RegisterUser();
-// }
-//
-// class _RegisterUser extends State<MainPage> {
-//   TextEditingController _orgNameController = TextEditingController();
-//   TextEditingController _serviceNameController = TextEditingController();
-//   TextEditingController _phoneNumberController = TextEditingController();
-//   TextEditingController _userNameController = TextEditingController();
-//   String selectedValue = "Government";
-//   int price = 2;
-//   bool isuploaded = false;
-//   final myController = TextEditingController();
-//
-//   @override
-//   void initState() {
-//     super.initState();
-//   }
-//
-//   List<DropdownMenuItem<String>> get dropdownItems {
-//     List<DropdownMenuItem<String>> menuItems = [
-//       DropdownMenuItem(child: Text("Government"), value: "Government"),
-//       DropdownMenuItem(child: Text("Private"), value: "Private"),
-//     ];
-//     return menuItems;
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: reusableAppBarOpp(MediaQuery.of(context).size.width, "REGISTER", context),
-//       backgroundColor: Color(0xfffff5f5),
-//       body:Container(
-//         child:
-//         SingleChildScrollView(
-//           scrollDirection: Axis.vertical,
-//           child:  Container(
-//             width: MediaQuery.of(context).size.width,
-//             // height: (0.8 * MediaQuery.of(context).size.height),
-//             alignment: Alignment.topCenter,
-//             child: Column(
-//               mainAxisAlignment: MainAxisAlignment.start,
-//               children: <Widget>[
-//                 // SizedBox(height: 13),
-//                 Column(
-//                   children: [
-//                     Column(
-//                       children: [
-//                         Container(
-//                           width: MediaQuery.of(context).size.width,
-//                           height: 0.2 * MediaQuery.of(context).size.height,
-//                           alignment: Alignment.center,
-//                           decoration: BoxDecoration(
-//                             borderRadius: BorderRadius.only(topLeft: Radius.circular(0), topRight: Radius.circular(0), bottomLeft: Radius.circular(0), bottomRight: Radius.circular(0), ),
-//                             color: Color(0xfffff5f5),
-//                             image: DecorationImage(
-//                               image: AssetImage('Assets/Images/Hind e-pay logo.png'),
-//                               scale: 0.05,
-//                               alignment: Alignment.center,
-//                             ),
-//                           ),//     color: Color(0xfffff5f5),
-//                         ),
-//                        // SizedBox(height: 0.02 * MediaQuery.of(context).size.height),
-//                         ReusableTextFieldWithTitle(context, "User Name", _orgNameController,"ABC"),
-//                       ],
-//                     ),SizedBox(height: 0.02 * MediaQuery.of(context).size.height),
-//                     Column(
-//                       children: [
-//                         ReusableTextFieldWithTitle(context, "Phone Number", _userNameController, "XXXXXXXXXX"),
-//                       ],
-//                     ),
-//                     SizedBox(height: 0.02 * MediaQuery.of(context).size.height),
-//                     Column(
-//                       children: [
-//                         ReusableTextFieldWithTitle(context, "EMAIL ID", _serviceNameController,"abc@gmail.com"),
-//                       ],
-//                     ),SizedBox(height: 0.02 * MediaQuery.of(context).size.height),
-//                     FloatingActionButton.extended(
-//                       heroTag: "Done",
-//                       onPressed: () => {},
-//                       label: Text('Confirm Details'),
-//                       backgroundColor: Color(0xff20c215),
-//                     ),
-//                   ],
-//                 ),
-//                 Text("OR"),
-//
-//                 TextButton(
-//                   onPressed: () {},
-//                   child: Text.rich(TextSpan(children: [
-//                     TextSpan(
-//                       text: "Already have an account?",
-//                       style: Theme.of(context).textTheme.bodyText1,
-//                     ),
-//                     TextSpan(text: "Login".toUpperCase())
-//                   ])),
-//                 )
-//               ],
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-

@@ -1,9 +1,8 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:hind_e_pay/ServiceProvider/passCodeSetterSP.dart';
+import 'package:hind_e_pay/ServiceProvider/Login-signin/passCodeSetterSP.dart';
 import 'package:pinput/pinput.dart';
 import 'RegisterSP.dart';
 import '../../Backend/RegisterController.dart';
@@ -71,7 +70,7 @@ class _RegisterVerifySPState extends State<RegisterVerifySP> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/AEM_logo.png',
+                'Assets/Images/hind e pay white logo.png',
                 width: 400,
                 height: 350,
               ),

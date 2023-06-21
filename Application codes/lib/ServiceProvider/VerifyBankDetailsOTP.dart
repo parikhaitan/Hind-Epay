@@ -1,13 +1,10 @@
+///This screen contains code for verification of bank details of the user -- this a simulation of actual environment
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:hind_e_pay/User/HomeUser.dart';
 import 'package:pinput/pinput.dart';
-
 import 'BankDetails.dart';
-import '../User/Login-signin/loginUser.dart';
 import 'HomeScreenSP.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
-
 
 class VerifyBankDetailsOTP extends StatefulWidget {
   const VerifyBankDetailsOTP({Key? key}) : super(key: key);
@@ -16,35 +13,10 @@ class VerifyBankDetailsOTP extends StatefulWidget {
   State<VerifyBankDetailsOTP> createState() => _VerifyBankDetailsOTPState();
 }
 
-
-
 class _VerifyBankDetailsOTPState extends State<VerifyBankDetailsOTP> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
-    final defaultPinTheme = PinTheme(
-      width: 56,
-      height: 56,
-      textStyle: TextStyle(
-          fontSize: 20,
-          color: Color.fromRGBO(30, 60, 87, 1),
-          fontWeight: FontWeight.w600),
-      decoration: BoxDecoration(
-        border: Border.all(color: Color(0xfffff5f5)),
-        borderRadius: BorderRadius.circular(20),
-      ),
-    );
-
-    final focusedPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: Color.fromRGBO(114, 178, 238, 1)),
-      borderRadius: BorderRadius.circular(8),
-    );
-
-    final submittedPinTheme = defaultPinTheme.copyWith(
-      decoration: defaultPinTheme.decoration?.copyWith(
-        color: Color(0xfffff5f5),
-      ),
-    );
     var code = "";
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -95,12 +67,10 @@ class _VerifyBankDetailsOTPState extends State<VerifyBankDetailsOTP> {
               ),
               Pinput(
                   length: 6,
-                  showCursor : true,
-                  onChanged: (value){
+                  showCursor: true,
+                  onChanged: (value) {
                     code = value;
-                  }
-
-              ),
+                  }),
               SizedBox(
                 height: 1,
               ),
@@ -113,22 +83,20 @@ class _VerifyBankDetailsOTPState extends State<VerifyBankDetailsOTP> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     onPressed: () async {
-                      try
-                      {
-                        PhoneAuthCredential credential = PhoneAuthProvider
-                            .credential(
-                            verificationId: ErupiTransactionForm.verify, smsCode: code);
+                      try {
+                        PhoneAuthCredential credential =
+                            PhoneAuthProvider.credential(
+                                verificationId: ErupiTransactionForm.verify,
+                                smsCode: code);
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) =>  const HomeScreenSP()));
-                      }
-                      catch(e){
+                            builder: (context) => const HomeScreenSP()));
+                      } catch (e) {
                         const snackBar = SnackBar(
                           content: Text("wrong otp"),
                           backgroundColor: Colors.red,
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         print("wrong otp");
-
                       }
                     },
                     child: Text("Verify Phone Number")),
@@ -140,7 +108,7 @@ class _VerifyBankDetailsOTPState extends State<VerifyBankDetailsOTP> {
                         Navigator.pushNamedAndRemoveUntil(
                           context,
                           'phone',
-                              (route) => false,
+                          (route) => false,
                         );
                       },
                       child: Text(

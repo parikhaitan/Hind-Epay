@@ -1,3 +1,4 @@
+///This screen comes post OTP authentication, to set the Passcode for the user
 
 import "dart:math";
 import "package:flutter/material.dart";
@@ -5,9 +6,9 @@ import "package:flutter_screen_lock/flutter_screen_lock.dart";
 import "package:get/get.dart";
 import "package:get/get_core/src/get_main.dart";
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'HomeUser.dart';
-import '../CommonScreens/reusable_widget.dart';
-import '../Backend/RegisterController.dart';
+import '../HomeUser.dart';
+import '../../CommonScreens/reusable_widget.dart';
+import '../../Backend/RegisterController.dart';
 
 class PasscodeSetterUser extends StatefulWidget {
   PasscodeSetterUser({super.key});
@@ -26,7 +27,7 @@ class _PasscodeSetterUserState extends State<PasscodeSetterUser> {
     final cc = Get.put(RegisterController());
 
     return Scaffold(
-        appBar:reusabbleAppBarToCloseApp("Login"),
+        appBar: reusabbleAppBarToCloseApp("Login"),
         body: Padding(
           padding: const EdgeInsets.all(16),
           child: Center(
@@ -40,29 +41,29 @@ class _PasscodeSetterUserState extends State<PasscodeSetterUser> {
                 alignment: WrapAlignment.center,
                 children: [
                   Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 0.6 * MediaQuery.of(context).size.height,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(0),
-                      topRight: Radius.circular(0),
-                      bottomLeft: Radius.circular(50),
-                      bottomRight: Radius.circular(50),
-                    ),
-                    color: Color(0xfffff5f5),
-                    image: DecorationImage(
-                      image: AssetImage('Assets/Images/Hind e-pay logo.png'),
-                      scale: 0.05,
-                      alignment: Alignment.center,
-                    ),
-                  ), //     color: Color(0xfffff5f5),
-                ),
+                    width: MediaQuery.of(context).size.width,
+                    height: 0.6 * MediaQuery.of(context).size.height,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(0),
+                        topRight: Radius.circular(0),
+                        bottomLeft: Radius.circular(50),
+                        bottomRight: Radius.circular(50),
+                      ),
+                      color: Color(0xfffff5f5),
+                      image: DecorationImage(
+                        image: AssetImage('Assets/Images/Hind e-pay logo.png'),
+                        scale: 0.05,
+                        alignment: Alignment.center,
+                      ),
+                    ), //     color: Color(0xfffff5f5),
+                  ),
                   // Flexible(
                   SizedBox(
                     width: 0.8 * MediaQuery.of(context).size.width,
                     child: Text(
-                      "You're just one step away to experience seemless transactions using E-Rupi!!",
+                      "You're just one step away from experiencing seemless transactions using E-Rupi!!",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Color(0xfff16f00),
@@ -78,7 +79,7 @@ class _PasscodeSetterUserState extends State<PasscodeSetterUser> {
                   ),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        alignment: Alignment.center,
+                          alignment: Alignment.center,
                           primary: Color.fromRGBO(241, 112, 0, 1.0),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10))),
@@ -86,7 +87,7 @@ class _PasscodeSetterUserState extends State<PasscodeSetterUser> {
                         String name = cc.userName.text.trim();
 
                         String email = cc.emailId.text.trim();
-                        String phoneNo = cc.phoneNo.text.trim();
+                        String phoneNo = "+91" + cc.phoneNo.text.trim();
                         await addUser(name, email, phoneNo);
 
                         final controller = InputController();
@@ -94,13 +95,13 @@ class _PasscodeSetterUserState extends State<PasscodeSetterUser> {
                           context: context,
                           inputController: controller,
                           onConfirmed: (value) async {
+                            PasscodeSetterUser.password = value;
                             const snackBar = SnackBar(
                               content: Text("Account Created Succesfully"),
                               backgroundColor: Colors.green,
                             );
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(snackBar);
-                            PasscodeSetterUser.password = value;
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => HomeUser()));
                           },
@@ -113,7 +114,6 @@ class _PasscodeSetterUserState extends State<PasscodeSetterUser> {
                           ),
                         );
                       },
-
                       child: Text("Set Security Lock")),
                 ],
               ),
@@ -122,6 +122,7 @@ class _PasscodeSetterUserState extends State<PasscodeSetterUser> {
         ));
   }
 
+//Adding user info to firebase
   Future<void> addUser(String userName, String email, String phoneNo) async {
     try {
       // Specify the collection and document ID (optional)
@@ -139,7 +140,7 @@ class _PasscodeSetterUserState extends State<PasscodeSetterUser> {
         Map<String, dynamic> data = {
           'UserName': userName,
           'E-mail': email,
-          'Phone No.': phoneNo,
+          'Phone No': phoneNo,
           // Add more fields as needed
         };
 

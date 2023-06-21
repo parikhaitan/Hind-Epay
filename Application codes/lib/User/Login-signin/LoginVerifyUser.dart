@@ -1,3 +1,5 @@
+///This files contains the code for OTP verification post entering login credentials
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hind_e_pay/User/HomeUser.dart';
@@ -15,29 +17,7 @@ class _LoginVerifyUserState extends State<LoginVerifyUser> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
-    final defaultPinTheme = PinTheme(
-      width: 56,
-      height: 56,
-      textStyle: TextStyle(
-          fontSize: 20,
-          color: Color.fromRGBO(30, 60, 87, 1),
-          fontWeight: FontWeight.w600),
-      decoration: BoxDecoration(
-        border: Border.all(color: Color(0xfffff5f5)),
-        borderRadius: BorderRadius.circular(20),
-      ),
-    );
 
-    final focusedPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: Color.fromRGBO(114, 178, 238, 1)),
-      borderRadius: BorderRadius.circular(8),
-    );
-
-    final submittedPinTheme = defaultPinTheme.copyWith(
-      decoration: defaultPinTheme.decoration?.copyWith(
-        color: Color(0xfffff5f5),
-      ),
-    );
     var code = "";
     return Scaffold(
       extendBodyBehindAppBar: true,

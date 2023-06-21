@@ -1,17 +1,9 @@
+///This screen enables in viewing the history of previously generated vouchers by the service provider -- whether they Have been redeemed by the user or not
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
 import '../CommonScreens/reusable_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
-
-import '../redeem.dart';
-import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 
 class ViewVouchers extends StatefulWidget {
   static String code = '';
@@ -23,38 +15,10 @@ class ViewVouchers extends StatefulWidget {
 
 class _ViewVouchersState extends State<ViewVouchers> {
   final voucherStream =
-  FirebaseFirestore.instance.collection('Vouchers').snapshots();
+      FirebaseFirestore.instance.collection('Vouchers').snapshots();
 
   @override
   Widget build(BuildContext context) {
-    Future<String?> openDialogAsk() => showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(30.0),
-          ),
-        ),
-        title: Text(
-          "Redeem this voucher?",
-          style: TextStyle(fontSize: 20),
-        ),
-        actions: [
-          TextButton(
-            child: Text("YES, redeem."),
-            onPressed: () {
-              print(ViewVouchers.code);
-            },
-          ),
-          TextButton(
-            child: Text("NO, go back."),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          )
-        ],
-      ),
-    );
 
     return Scaffold(
       appBar: reusableAppBarOpp(
@@ -101,25 +65,6 @@ class _ViewVouchersState extends State<ViewVouchers> {
                     'Amount: ${docs[index]['Amount']}\nPurpose: ${docs[index]['Service']}\nExpiration Date: ${docs[index]['Expiration Date']}',
                     style: TextStyle(color: Color(0xff262626), fontSize: 15),
                   ),
-                  onTap: () async {
-                    openDialogAsk();
-                    ViewVouchers.code = docs[index]['Nid'];
-                    await FirebaseAuth.instance.verifyPhoneNumber(
-                      phoneNumber: ViewVouchers.code,
-                      verificationCompleted: (PhoneAuthCredential credential) {},
-                      verificationFailed: (FirebaseAuthException e) {},
-                      codeSent: (String verificationId, int? resendToken) {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Redeem(),
-                          ),
-                        );
-                        ViewVouchers.verify = verificationId;
-                      },
-                      codeAutoRetrievalTimeout: (String verificationId) {},
-                    );
-                  },
                 ),
               );
             },

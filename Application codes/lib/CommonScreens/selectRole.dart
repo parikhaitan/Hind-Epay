@@ -1,9 +1,9 @@
+///This is the main screen that comes after the splash screen, one can choose whether he wants to login as user or service provider ||or register on this screen
+
 import 'package:flutter/material.dart';
-import 'package:hind_e_pay/ServiceProvider/HomeScreenSP.dart';
 import 'package:hind_e_pay/User/Login-signin/loginUser.dart';
 import 'package:hind_e_pay/CommonScreens/registerChoice.dart';
 import 'package:hind_e_pay/CommonScreens/reusable_widget.dart';
-import '../User/HomeUser.dart';
 import '../ServiceProvider/Login-signin/loginSP.dart';
 
 class SelectRole extends StatefulWidget {

@@ -18,9 +18,4 @@ class RegisterController extends GetxController {
   final phoneNumber = TextEditingController();
   final name = TextEditingController();
 
-
-
-//Call this Function from Design & it will do the rest
-
-
 }

@@ -1,3 +1,5 @@
+///This is our future scope -- making it the only payement app one needs in their phone -- using wallet, transactions using UPI will also be possible
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hind_e_pay/CommonScreens/reusable_widget.dart';

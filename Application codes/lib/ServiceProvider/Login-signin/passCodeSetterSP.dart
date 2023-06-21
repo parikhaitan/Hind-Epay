@@ -1,3 +1,6 @@
+///This screen comes post OTP authentication, to set the Passcode for the Service provider
+
+
 import "dart:math";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
@@ -5,9 +8,9 @@ import "package:flutter_screen_lock/flutter_screen_lock.dart";
 import "package:get/get.dart";
 import "package:get/get_core/src/get_main.dart";
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'HomeScreenSP.dart';
-import '../CommonScreens/reusable_widget.dart';
-import '../Backend/RegisterController.dart';
+import '../HomeScreenSP.dart';
+import '../../CommonScreens/reusable_widget.dart';
+import '../../Backend/RegisterController.dart';
 
 class PasscodeSetterSP extends StatefulWidget {
   PasscodeSetterSP({super.key});
@@ -78,7 +81,7 @@ class _PasscodeSetterSPState extends State<PasscodeSetterSP> {
                 onPressed: () async {
                   String name = cc.name.text.trim();
                   String orgName = cc.orgName.text.trim();
-                  String phoneNo = cc.phoneNumber.text.trim();
+                  String phoneNo = "+91" + cc.phoneNumber.text.trim();
                   String service = cc.serviceName.text.trim();
                   await addSP(name, orgName, phoneNo, service);
 
@@ -112,6 +115,7 @@ class _PasscodeSetterSPState extends State<PasscodeSetterSP> {
     );
   }
 
+  //Adding Service provider credentials info to firebase
   Future<void> addSP(
       String userName, String orgName, String phoneNo, String service) async {
     try {
@@ -131,7 +135,7 @@ class _PasscodeSetterSPState extends State<PasscodeSetterSP> {
         Map<String, dynamic> data = {
           'UserName': userName,
           'Organisation Name': orgName,
-          'Phone No.': phoneNo,
+          'Phone No': phoneNo,
           'service Name': service
           // Add more fields as needed
         };

@@ -1,3 +1,5 @@
+///This is the home screen for vouchers -- user can navigate to either his money wallet or E-Rupi Home page from here
+
 import 'package:flutter/material.dart';
 import 'package:hind_e_pay/CommonScreens/reusable_widget.dart';
 import 'ERupiHome.dart';

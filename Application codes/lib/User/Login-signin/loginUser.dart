@@ -1,12 +1,9 @@
-//UI
-// import 'package:backend/home/homeUser/homeUser.dart';
-// import 'package:backend/randomFiles/random.dart';
-// import 'package:backend/startup/Register/registerScreen.dart';
+///This files contains the code of Login Screen for User End
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hind_e_pay/User/Login-signin/LoginVerifyUser.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginUser extends StatefulWidget {
   const LoginUser({Key? key}) : super(key: key);
@@ -22,7 +19,6 @@ class _LoginUser extends State<LoginUser> {
 
   @override
   void initState() {
-    // TODO: implement initState
     countryController.text = "+91";
     super.initState();
   }
@@ -134,8 +130,13 @@ class _LoginUser extends State<LoginUser> {
                               (PhoneAuthCredential credential) {},
                           verificationFailed: (FirebaseAuthException e) {},
                           codeSent: (String verificationId, int? resendToken) {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => LoginVerifyUser()));
+                            print("running");
+                            WidgetsBinding.instance!.addPostFrameCallback((_) {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => LoginVerifyUser()));
+                            });
                             LoginUser.verify = verificationId;
                           },
                           codeAutoRetrievalTimeout: (String verificationId) {},
@@ -169,6 +170,7 @@ class _LoginUser extends State<LoginUser> {
     );
   }
 
+  //Checks whether the number being used to login is previously registered or not! If not it will ask the user to register first
   Future<bool> checkPhoneNumberRegistered(
       String phoneNumber, String collection) async {
     FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -185,6 +187,8 @@ class _LoginUser extends State<LoginUser> {
     } else {
       // Phone number is not registered
       print('Phone number is not registered.');
+      print(phone);
+      print(phoneNumber);
       return false;
     }
   }

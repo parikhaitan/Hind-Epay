@@ -1,8 +1,10 @@
+///This screen is the otp screen for authentication of user being registered
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:hind_e_pay/User/passCodeSetterUser.dart';
+import 'package:hind_e_pay/User/Login-signin/passCodeSetterUser.dart';
 import 'package:hind_e_pay/CommonScreens/SplashScreen.dart';
 import 'package:pinput/pinput.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -22,7 +24,6 @@ class _RegisterVerifyState extends State<RegisterVerify> {
 
   // Generate a random 4-digit number
   //Increasing Security of code
-
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
@@ -38,16 +39,6 @@ class _RegisterVerifyState extends State<RegisterVerify> {
       ),
     );
 
-    final focusedPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: Color.fromRGBO(114, 178, 238, 1)),
-      borderRadius: BorderRadius.circular(8),
-    );
-
-    final submittedPinTheme = defaultPinTheme.copyWith(
-      decoration: defaultPinTheme.decoration?.copyWith(
-        color: Color.fromRGBO(234, 239, 243, 1),
-      ),
-    );
     var code = "";
     return Scaffold(
       extendBodyBehindAppBar: true,

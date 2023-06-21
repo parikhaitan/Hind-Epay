@@ -1,3 +1,5 @@
+///This files contains the code of Login Screen for Service Provider End
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -161,6 +163,7 @@ class _LoginSP extends State<LoginSP> {
     );
   }
 
+  //Checks whether the number being used to login is previously registered or not! If not it will ask the user to register first
   Future<bool> checkPhoneNumberRegistered(
       String phoneNumber, String collection) async {
     FirebaseFirestore _firestore = FirebaseFirestore.instance;

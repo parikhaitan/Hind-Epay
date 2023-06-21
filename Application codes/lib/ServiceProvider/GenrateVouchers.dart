@@ -1,3 +1,5 @@
+///Generating e rupi vouchers -- the service provider can generate the vouchers for the user her wants to provide to from here
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -64,6 +66,7 @@ class _SPVouchersState extends State<SPVouchers> {
   List<List<dynamic>> vouchers = [];
   List<dynamic> voucher = [];
 
+  // Creating the voucher
   void _createVoucher() {
     if (_formKey.currentState!.validate()) {
       final nameOfService = controller.serviceController.text.trim();
@@ -82,6 +85,8 @@ class _SPVouchersState extends State<SPVouchers> {
     vouchers.add(voucher);
   }
 
+
+  //generating unique code for users to act as the voucher code -- this has to be ideally provided by the banks but here we are stimulating the environment since the E Rupi API is not available
   String generateRandomCode() {
     final random = Random();
     final letters =
@@ -93,6 +98,7 @@ class _SPVouchersState extends State<SPVouchers> {
     return codeList.join('');
   }
 
+  //Selecting the data of the recipients
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -132,6 +138,7 @@ class _SPVouchersState extends State<SPVouchers> {
       });
     }
 
+    //Exporting the data of voucher informations to firebase -- this has to be shared with the bank when E Rupi ApI will be available
     Future<void> export_data() async {
       final CollectionReference maindb =
           FirebaseFirestore.instance.collection('Vouchers');
@@ -340,6 +347,10 @@ class _SPVouchersState extends State<SPVouchers> {
     );
   }
 
+
+  ///Reciept screen
+
+  //Calculating the money based on number of vouchers and price per voucher
   double _calculateTotalAmount() {
     double totalAmount = 0;
     for (var voucher in vouchers) {
@@ -420,8 +431,6 @@ class PaymentConfirmationPage extends StatelessWidget {
               label: Text('Pay'),
               //   icon: Icons.attach_file,
               backgroundColor: Color(0xff20c215),
-
-              //icon: Icon(Icons.payment),
             ),
           ],
         ),

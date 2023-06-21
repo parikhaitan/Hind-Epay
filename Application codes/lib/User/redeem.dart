@@ -1,10 +1,12 @@
+///This screen is redeeming the E-Rupi Vouchers that we added in our application in the add Voucher option -- redeeming is done using OTP vefication
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
-import 'User/passCodeSetterUser.dart';
-import 'User/viewVoucher.dart';
+import 'Login-signin/passCodeSetterUser.dart';
+import 'viewVoucher.dart';
 
 class Redeem extends StatefulWidget {
   const Redeem({Key? key}) : super(key: key);
@@ -20,29 +22,29 @@ class _RedeemState extends State<Redeem> {
   Widget build(BuildContext context) {
     Future<void> get_redeemed() async {
       CollectionReference db =
-      FirebaseFirestore.instance.collection('Vouchers');
+          FirebaseFirestore.instance.collection('Vouchers');
 
       QuerySnapshot snapshot =
-      await db.where('Nid', isEqualTo: ViewVouchers.code).get();
+          await db.where('Nid', isEqualTo: ViewVouchers.code).get();
 
       for (var document in snapshot.docs) {
         String documentId = document.id;
         db.doc(documentId).delete().then(
               (doc) => AwesomeDialog(
-            context: context,
-            dialogType: DialogType.success,
-            animType: AnimType.bottomSlide,
-            showCloseIcon: true,
-            title: "Success",
-            desc: "Voucher has been redeemed.",
-            btnOkOnPress: () {},
-          )..show(),
-          onError: (e) => print("Error redeeming$e"),
-        );
+                context: context,
+                dialogType: DialogType.success,
+                animType: AnimType.bottomSlide,
+                showCloseIcon: true,
+                title: "Success",
+                desc: "Voucher has been redeemed.",
+                btnOkOnPress: () {},
+              )..show(),
+              onError: (e) => print("Error redeeming$e"),
+            );
       }
 
       CollectionReference user_db =
-      FirebaseFirestore.instance.collection('users');
+          FirebaseFirestore.instance.collection('users');
 
       QuerySnapshot user_snapshot = await FirebaseFirestore.instance
           .collection("users")
@@ -61,57 +63,7 @@ class _RedeemState extends State<Redeem> {
         });
       }
     }
-    //           (doc) => AwesomeDialog(
-    //         context: context,
-    //         dialogType: DialogType.success,
-    //         animType: AnimType.bottomSlide,
-    //         showCloseIcon: true,
-    //         title: "Success",
-    //         desc: "Voucher has been redeemed.",
-    //         btnOkOnPress: () {},
-    //       )..show(),
-    //       onError: (e) => print("Error redeeming$e"),
-    //     );
-    //   }
-    //
-    //   CollectionReference user_db =
-    //   FirebaseFirestore.instance.collection('User Vouchers');
-    //
-    //   QuerySnapshot user_snapshot =
-    //   await user_db.where('Nid', isEqualTo: ViewVouchers.code).get();
-    //   for (var document in user_snapshot.docs) {
-    //     String documentId = document.id;
-    //     await user_db.doc(documentId).update({
-    //       'Nid': 'Null',
-    //     });
-    //   }
-    // }
-    //
 
-
-    final defaultPinTheme = PinTheme(
-      width: 56,
-      height: 56,
-      textStyle: TextStyle(
-          fontSize: 20,
-          color: Color.fromRGBO(30, 60, 87, 1),
-          fontWeight: FontWeight.w600),
-      decoration: BoxDecoration(
-        border: Border.all(color: Color.fromRGBO(234, 239, 243, 1)),
-        borderRadius: BorderRadius.circular(20),
-      ),
-    );
-
-    final focusedPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: Color.fromRGBO(114, 178, 238, 1)),
-      borderRadius: BorderRadius.circular(8),
-    );
-
-    final submittedPinTheme = defaultPinTheme.copyWith(
-      decoration: defaultPinTheme.decoration?.copyWith(
-        color: Color.fromRGBO(234, 239, 243, 1),
-      ),
-    );
     var code = "";
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -136,7 +88,7 @@ class _RedeemState extends State<Redeem> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/AEM_logo.png',
+                'Assets/Images/Hind e-pay logo.png',
                 width: 400,
                 height: 350,
               ),
@@ -165,14 +117,7 @@ class _RedeemState extends State<Redeem> {
                   showCursor: true,
                   onChanged: (value) {
                     code = value;
-                  }
-
-                // defaultPinTheme: defaultPinTheme,
-                // focusedPinTheme: focusedPinTheme,
-                // submittedPinTheme: submittedPinTheme,
-
-                //onCompleted: (pin) => print(pin),
-              ),
+                  }),
               SizedBox(
                 height: 1,
               ),
@@ -181,16 +126,16 @@ class _RedeemState extends State<Redeem> {
                 height: 45,
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: Color.fromRGBO(241, 112, 0, 1.0),
+                        backgroundColor: Color.fromRGBO(241, 112, 0, 1.0),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     onPressed: () async {
                       try {
                         // Create a PhoneAuthCredential with the code
                         PhoneAuthCredential credential =
-                        PhoneAuthProvider.credential(
-                            verificationId: ViewVouchers.verify,
-                            smsCode: code);
+                            PhoneAuthProvider.credential(
+                                verificationId: ViewVouchers.verify,
+                                smsCode: code);
                         get_redeemed();
                       } catch (e) {
                         print("Error");
@@ -205,7 +150,7 @@ class _RedeemState extends State<Redeem> {
                         Navigator.pushNamedAndRemoveUntil(
                           context,
                           'phone',
-                              (route) => false,
+                          (route) => false,
                         );
                       },
                       child: Text(

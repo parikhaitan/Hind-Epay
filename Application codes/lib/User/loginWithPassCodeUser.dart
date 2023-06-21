@@ -1,13 +1,8 @@
-//UI
-
+///Once the user has loggen in, if wishes to stay login -- he will just need to add the passcode -- this screen is with reference to that
 import "package:flutter/material.dart";
-
 import "package:flutter_screen_lock/flutter_screen_lock.dart";
-
-import 'passCodeSetterUser.dart';
+import 'Login-signin/passCodeSetterUser.dart';
 import 'HomeUser.dart';
-
-
 
 class LoginWithPasscodeUser extends StatefulWidget {
   const LoginWithPasscodeUser({super.key});
@@ -21,10 +16,7 @@ class _LoginWithPasscodeUserState extends State<LoginWithPasscodeUser> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-
-
           title: const Text('Login'),
-
         ),
         body: Padding(
           padding: const EdgeInsets.all(16),
@@ -43,17 +35,17 @@ class _LoginWithPasscodeUserState extends State<LoginWithPasscodeUser> {
                       context: context,
                       builder: (context) {
                         return ScreenLock(
-                            correctString:  PasscodeSetterUser.password ,//RegisterFormUser.password,
+                            correctString: PasscodeSetterUser
+                                .password, //RegisterFormUser.password,
                             onCancelled: Navigator.of(context).pop,
-                            onUnlocked: (){
+                            onUnlocked: () {
                               Navigator.of(context).pop;
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const HomeUser()),
+                                MaterialPageRoute(
+                                    builder: (context) => const HomeUser()),
                               );
-                            }
-
-                        );
+                            });
                       },
                     ),
                     child: const Text('Login  password'),
@@ -63,11 +55,11 @@ class _LoginWithPasscodeUserState extends State<LoginWithPasscodeUser> {
                       Navigator.pushNamed(context, "secondScreen");
                     },
                     child: const Text('Back'),
-                  ), ],
+                  ),
+                ],
               ),
             ),
           ),
         ));
-
   }
 }

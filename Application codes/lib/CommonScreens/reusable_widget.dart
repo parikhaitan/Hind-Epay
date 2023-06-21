@@ -1,3 +1,5 @@
+///THis file contains the code of all the reuable widgets that are used for UI
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -36,6 +38,7 @@ Container reusableRowContainer(double h, double w, Image im, String t) {
     ),
   );
 }
+
 Container reusableContainerButton(
     double h, double w, double fh, double fw, Image im, String t) {
   return Container(
@@ -92,8 +95,6 @@ Container reusableContainerButton(
   );
 }
 
-
-
 Container reusableRectangleButton(double h, double w, String t) {
   return Container(
     width: 0.38 * w,
@@ -118,6 +119,7 @@ Container reusableRectangleButton(double h, double w, String t) {
     ),
   );
 }
+
 AppBar reusableAppBarLogout(double w, String title, BuildContext context) {
   return AppBar(
     leading: IconButton(
@@ -132,10 +134,7 @@ AppBar reusableAppBarLogout(double w, String title, BuildContext context) {
     title: Text(
       title,
       style: TextStyle(
-          fontSize: 30,
-          color: Colors.black,
-          fontWeight: FontWeight.bold
-      ),
+          fontSize: 30, color: Colors.black, fontWeight: FontWeight.bold),
     ),
     //   centerTitle: true,
     toolbarHeight: 90.2,
@@ -163,10 +162,7 @@ AppBar reusableAppBar(double w, String title, BuildContext context) {
     title: Text(
       title,
       style: TextStyle(
-          fontSize: 30,
-          color: Colors.black,
-          fontWeight: FontWeight.bold
-      ),
+          fontSize: 30, color: Colors.black, fontWeight: FontWeight.bold),
     ),
     //   centerTitle: true,
     toolbarHeight: 90.2,
@@ -179,8 +175,6 @@ AppBar reusableAppBar(double w, String title, BuildContext context) {
     backgroundColor: Color(0xfffff5f5),
   );
 }
-
-
 
 Container ReusableTextFieldWithTitle(BuildContext context, String title,
     TextEditingController textEditingController, String hintText) {
@@ -232,7 +226,6 @@ Container ReusableTextFieldWithTitle(BuildContext context, String title,
   );
 }
 
-
 Container ReusableTextFieldWithTitleForm(
     BuildContext context, String title, TextFormField tff) {
   return Container(
@@ -259,12 +252,11 @@ Container ReusableTextFieldWithTitleForm(
               style: TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
-
                 color: Color(0xfffff5f5),
               )),
         ),
         Container(
-          height:0.09 * MediaQuery.of(context).size.height ,
+          height: 0.09 * MediaQuery.of(context).size.height,
           width: 0.8 * MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
@@ -278,28 +270,28 @@ Container ReusableTextFieldWithTitleForm(
   );
 }
 
-AppBar reusabbleAppBarToCloseApp(String title){
+AppBar reusabbleAppBarToCloseApp(String title) {
   return AppBar(
     leading: IconButton(
       onPressed: () {
         SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-
       },
       icon: Icon(
         Icons.arrow_back_ios_rounded,
         color: Colors.black,
       ),
     ),
-    title: Text(title,
+    title: Text(
+      title,
       style: TextStyle(
           fontSize: 30,
           color: Color(0xfffff5f5),
           fontWeight: FontWeight.bold,
-          fontFamily: 'BebasNeue'),),
+          fontFamily: 'BebasNeue'),
+    ),
     flexibleSpace: Image(
         image: AssetImage('Assets/Images/bg screen.png'), fit: BoxFit.cover),
   );
-
 }
 
 AppBar reusableAppBarOppLogOut(double w, String title, BuildContext context) {
@@ -311,7 +303,7 @@ AppBar reusableAppBarOppLogOut(double w, String title, BuildContext context) {
         icon: Icon(
           Icons.arrow_back_ios,
           size: 20,
-          color:Color(0xfffff5f5),
+          color: Color(0xfffff5f5),
         )),
     title: Text(
       title,
@@ -333,6 +325,7 @@ AppBar reusableAppBarOppLogOut(double w, String title, BuildContext context) {
         image: AssetImage('Assets/Images/bg screen.png'), fit: BoxFit.cover),
   );
 }
+
 AppBar reusableAppBarOpp(double w, String title, BuildContext context) {
   return AppBar(
     leading: IconButton(
@@ -342,15 +335,15 @@ AppBar reusableAppBarOpp(double w, String title, BuildContext context) {
         icon: Icon(
           Icons.arrow_back_ios,
           size: 20,
-          color:Color(0xfffff5f5),
+          color: Color(0xfffff5f5),
         )),
     title: Text(
       title,
       style: TextStyle(
-          fontSize: 30,
-          color: Color(0xfffff5f5),
-          fontWeight: FontWeight.bold,
-          ),
+        fontSize: 30,
+        color: Color(0xfffff5f5),
+        fontWeight: FontWeight.bold,
+      ),
     ),
     //   centerTitle: true,
     toolbarHeight: 90.2,
@@ -364,7 +357,6 @@ AppBar reusableAppBarOpp(double w, String title, BuildContext context) {
         image: AssetImage('Assets/Images/bg screen.png'), fit: BoxFit.cover),
   );
 }
-
 
 Container reusableRowContainerBG(double h, double w, String t, Icon icon) {
   return Container(
