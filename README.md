@@ -6,7 +6,7 @@ This project was developed collaboratively by a team of contributors. It showcas
 - [Pari Khaitan](https://github.com/CyScar)
 - [Simran Sagar](https://github.com/member2)
 - [Vanshika Ahuja](https://github.com/VanshikaA27)
-- [Disha Jain]
+- [Disha Jain](https://github.com/Disha677)
 
 ## Challenge
 To Build a basic digital wallet to transact using e-RUPI
