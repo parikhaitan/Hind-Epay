@@ -37,6 +37,7 @@ class _SPVouchersState extends State<SPVouchers> {
   var nameOfService;
   var amountPerVoucher;
   var expirationDate;
+  String? _benificiaryOrg;
 
   final controller = Get.put(SPController());
   static List<List<dynamic>> _data = [];
@@ -84,7 +85,6 @@ class _SPVouchersState extends State<SPVouchers> {
     }
     vouchers.add(voucher);
   }
-
 
   //generating unique code for users to act as the voucher code -- this has to be ideally provided by the banks but here we are stimulating the environment since the E Rupi API is not available
   String generateRandomCode() {
@@ -205,119 +205,198 @@ class _SPVouchersState extends State<SPVouchers> {
           child: Form(
             key: _formKey,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ReusableTextFieldWithTitleForm(
-                  context,
-                  "Purpose of voucher",
-                  TextFormField(
-                    controller: controller.serviceController,
-                    decoration: InputDecoration(labelText: 'Eg: Scholarship'),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Please enter the name of the service';
-                      }
-                      return null;
-                    },
+                DropdownButtonFormField<String>(
+                  value: _benificiaryOrg,
+                  onChanged: (value) {
+                    setState(() {
+                      _benificiaryOrg = value;
+                    });
+                  },
+                  items: <String>[
+                    'College 1',
+                    'College 2',
+                  ].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  decoration: InputDecoration(
+                    labelText: 'Select organisation',
                   ),
+                  validator: (value) {
+                    if (value == null) {
+                      return 'Please select a bank';
+                    }
+                    return null;
+                  },
                 ),
+                TextFormField(
+                  controller: controller.serviceController,
+                  decoration: InputDecoration(labelText: 'Purpose of voucher'),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter the name of the service';
+                    }
+                    return null;
+                  },
+                ),
+
+                // ReusableTextFieldWithTitleForm(
+                //   context,
+                //   "Purpose of voucher",
+                //   TextFormField(
+                //     controller: controller.serviceController,
+                //     decoration: InputDecoration(labelText: 'Eg: Scholarship'),
+                //     validator: (value) {
+                //       if (value!.isEmpty) {
+                //         return 'Please enter the name of the service';
+                //       }
+                //       return null;
+                //     },
+                //   ),
+                // ),
                 SizedBox(height: 16.0),
-                ReusableTextFieldWithTitleForm(
-                  context,
-                  "Amount per Voucher",
-                  TextFormField(
-                    controller: controller.amountController,
-                    decoration: InputDecoration(labelText: '100'),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Please enter the amount per voucher';
-                      }
-                      if (double.tryParse(value) == null) {
-                        return 'Invalid amount';
-                      }
-                      return null;
-                    },
-                    keyboardType:
-                        TextInputType.numberWithOptions(decimal: true),
-                  ),
+                TextFormField(
+                  controller: controller.amountController,
+                  decoration: InputDecoration(
+                      labelText: 'Please enter the amount per voucher'),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter the amount per voucher';
+                    }
+                    if (double.tryParse(value) == null) {
+                      return 'Invalid amount';
+                    }
+                    return null;
+                  },
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
                 ),
+                // ReusableTextFieldWithTitleForm(
+                //   context,
+                //   "Amount per Voucher",
+                //   TextFormField(
+                //     controller: controller.amountController,
+                //     decoration: InputDecoration(labelText: '100'),
+                //     validator: (value) {
+                //       if (value!.isEmpty) {
+                //         return 'Please enter the amount per voucher';
+                //       }
+                //       if (double.tryParse(value) == null) {
+                //         return 'Invalid amount';
+                //       }
+                //       return null;
+                //     },
+                //     keyboardType:
+                //         TextInputType.numberWithOptions(decimal: true),
+                //   ),
+                // ),
                 SizedBox(height: 16.0),
-                Container(
-                  width: 0.9 * MediaQuery.of(context).size.width,
-                  height: 0.1 * MediaQuery.of(context).size.height,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('Assets/Images/bg screen.png'),
-                        fit: BoxFit.cover),
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0x3f000000),
-                        blurRadius: 10,
-                        offset: Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 8),
-                      Flexible(
-                        child: Text("Expiration Date: ",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xfffff5f5),
-                            )),
-                      ),
-                      Container(
-                        width: 0.8 * MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          //color: Color(0xfffff5f5),
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(CupertinoIcons.calendar,
-                                size: 40, color: Color(0xfffff5f5)),
-                            SizedBox(
-                              width: 0.05 * MediaQuery.of(context).size.width,
-                            ),
-                            TextButton(
-                              onPressed: () => _selectDate(context),
-                              child: Text(
-                                '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}',
-                                style: TextStyle(
-                                  color: Colors.cyanAccent,
-                                  fontSize: 22,
-                                  fontFamily: "Montserrat",
-                                  // fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 8),
-                    ],
-                  ),
+                Text(
+                  "Expiration Date: ",
+                  textAlign: TextAlign.left,
                 ),
+                Row(
+                  children: [
+                    Icon(CupertinoIcons.calendar, size: 40, color: Colors.grey),
+                    SizedBox(
+                      width: 0.05 * MediaQuery.of(context).size.width,
+                    ),
+                    TextButton(
+                      onPressed: () => _selectDate(context),
+                      child: Text(
+                        '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}',
+                        style: TextStyle(
+                          // color: Colors.cyanAccent,
+                          fontSize: 17,
+                          fontFamily: "Montserrat",
+                          // fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                // Container(
+                //   width: 0.9 * MediaQuery.of(context).size.width,
+                //   height: 0.1 * MediaQuery.of(context).size.height,
+                //   decoration: BoxDecoration(
+                //     image: DecorationImage(
+                //         image: AssetImage('Assets/Images/bg screen.png'),
+                //         fit: BoxFit.cover),
+                //     borderRadius: BorderRadius.circular(10),
+                //     boxShadow: [
+                //       BoxShadow(
+                //         color: Color(0x3f000000),
+                //         blurRadius: 10,
+                //         offset: Offset(0, 4),
+                //       ),
+                //     ],
+                //   ),
+                //   child: Column(
+                //     children: [
+                //       SizedBox(height: 8),
+                //       Flexible(
+                //         child: Text("Expiration Date: ",
+                //             textAlign: TextAlign.left,
+                //             style: TextStyle(
+                //               fontSize: 18.0,
+                //               fontWeight: FontWeight.bold,
+                //               color: Color(0xfffff5f5),
+                //             )),
+                //       ),
+                //       Container(
+                //         width: 0.8 * MediaQuery.of(context).size.width,
+                //         decoration: BoxDecoration(
+                //           borderRadius: BorderRadius.circular(25),
+                //           //color: Color(0xfffff5f5),
+                //         ),
+                //         child: Row(
+                //           children: [
+                //             Icon(CupertinoIcons.calendar,
+                //                 size: 40, color: Color(0xfffff5f5)),
+                //             SizedBox(
+                //               width: 0.05 * MediaQuery.of(context).size.width,
+                //             ),
+                //             TextButton(
+                //               onPressed: () => _selectDate(context),
+                //               child: Text(
+                //                 '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}',
+                //                 style: TextStyle(
+                //                   color: Colors.cyanAccent,
+                //                   fontSize: 22,
+                //                   fontFamily: "Montserrat",
+                //                   // fontWeight: FontWeight.w700,
+                //                 ),
+                //               ),
+                //             ),
+                //           ],
+                //         ),
+                //       ),
+                //       SizedBox(height: 8),
+                //     ],
+                //   ),
+                // ),
                 SizedBox(
                   height: 20,
                 ),
+
                 GestureDetector(
                   onTap: () {
                     _pickFile();
                   },
                   child: reusableRowContainerBG(
-                    MediaQuery.of(context).size.height,
-                    MediaQuery.of(context).size.width,
+                    0.5 * MediaQuery.of(context).size.height,
+                    0.5 * MediaQuery.of(context).size.width,
                     "Choose CSV File",
                     Icon(CupertinoIcons.paperclip,
-                        size: 40, color: Color(0xfffff5f5)),
+                        size: 20, color: Color(0xfffff5f5)),
                   ),
                 ),
+
                 SizedBox(height: 10.0),
+
                 const Text(
                   'Imported Data sample:',
                   style: TextStyle(
@@ -329,15 +408,22 @@ class _SPVouchersState extends State<SPVouchers> {
                     ? _buildImportedDataList()
                     : const Text('No data imported'),
                 SizedBox(height: 10.0),
-                FloatingActionButton.extended(
-                  heroTag: "Done",
-                  onPressed: () {
-                    _createVoucher();
-                    check();
-                  },
-                  label: Text('Generate Vouchers'),
-                  //   icon: Icons.attach_file,
-                  backgroundColor: Color(0xff20c215),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 0.2 * MediaQuery.of(context).size.width,
+                    ),
+                    FloatingActionButton.extended(
+                      heroTag: "Done",
+                      onPressed: () {
+                        _createVoucher();
+                        check();
+                      },
+                      label: Text('Generate Vouchers'),
+                      //   icon: Icons.attach_file,
+                      backgroundColor: Color(0xff20c215),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -346,7 +432,6 @@ class _SPVouchersState extends State<SPVouchers> {
       ),
     );
   }
-
 
   ///Reciept screen
 

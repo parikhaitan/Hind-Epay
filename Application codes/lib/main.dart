@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:hind_e_pay/CommonScreens/SplashScreen.dart';
 import 'Backend/firebase_config.dart';
 
-
 void main() async {
    WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(

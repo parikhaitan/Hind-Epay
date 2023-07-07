@@ -125,6 +125,7 @@ class _LoginSP extends State<LoginSP> {
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       } else {
+                       // await FirebaseAuth.instance.setSettings(appVerificationDisabledForTesting: true);
                         await FirebaseAuth.instance.verifyPhoneNumber(
                           phoneNumber: number,
                           verificationCompleted:

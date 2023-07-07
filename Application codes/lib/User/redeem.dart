@@ -5,6 +5,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
+import 'Login-signin/loginUser.dart';
 import 'Login-signin/passCodeSetterUser.dart';
 import 'viewVoucher.dart';
 
@@ -16,7 +17,8 @@ class Redeem extends StatefulWidget {
 }
 
 class _RedeemState extends State<Redeem> {
-  final id = PasscodeSetterUser.id;
+
+  final id = (LoginUser.id == "") ? PasscodeSetterUser.id :LoginUser.id; //= PasscodeSetterUser.id;//"
   final FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
@@ -143,22 +145,22 @@ class _RedeemState extends State<Redeem> {
                     },
                     child: Text("AUTHENTICATE")),
               ),
-              Row(
-                children: [
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pushNamedAndRemoveUntil(
-                          context,
-                          'phone',
-                          (route) => false,
-                        );
-                      },
-                      child: Text(
-                        "Edit Phone Number ?",
-                        style: TextStyle(color: Colors.black),
-                      ))
-                ],
-              )
+              // Row(
+              //   children: [
+              //     TextButton(
+              //         onPressed: () {
+              //           Navigator.pushNamedAndRemoveUntil(
+              //             context,
+              //             'phone',
+              //             (route) => false,
+              //           );
+              //         },
+              //         child: Text(
+              //           "Edit Phone Number ?",
+              //           style: TextStyle(color: Colors.black),
+              //         ))
+              //   ],
+              // )
             ],
           ),
         ),

@@ -56,7 +56,7 @@ class _VerifyBankDetailsOTPState extends State<VerifyBankDetailsOTP> {
                 height: 10,
               ),
               Text(
-                "We need to register your phone without getting started!",
+                "Enter the one time password you recieved on your registered phone number to complete the payemnt!",
                 style: TextStyle(
                   fontSize: 16,
                 ),
@@ -101,22 +101,22 @@ class _VerifyBankDetailsOTPState extends State<VerifyBankDetailsOTP> {
                     },
                     child: Text("Verify Phone Number")),
               ),
-              Row(
-                children: [
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pushNamedAndRemoveUntil(
-                          context,
-                          'phone',
-                          (route) => false,
-                        );
-                      },
-                      child: Text(
-                        "Edit Phone Number ?",
-                        style: TextStyle(color: Colors.black),
-                      ))
-                ],
-              )
+              // Row(
+              //   children: [
+              //     TextButton(
+              //         onPressed: () {
+              //           Navigator.pushNamedAndRemoveUntil(
+              //             context,
+              //             'phone',
+              //             (route) => false,
+              //           );
+              //         },
+              //         child: Text(
+              //           "Edit Phone Number ?",
+              //           style: TextStyle(color: Colors.black),
+              //         ))
+              //   ],
+              // )
             ],
           ),
         ),

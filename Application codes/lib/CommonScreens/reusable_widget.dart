@@ -387,7 +387,7 @@ Container reusableRowContainerBG(double h, double w, String t, Icon icon) {
             textAlign: TextAlign.left,
             style: TextStyle(
               color: Color(0xfffff5f5),
-              fontSize: 22,
+              fontSize: h*0.03,
               fontFamily: "Montserrat",
               fontWeight: FontWeight.w700,
             ),

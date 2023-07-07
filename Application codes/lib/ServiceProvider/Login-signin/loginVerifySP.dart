@@ -79,7 +79,7 @@ class _LoginVerifySPState extends State<LoginVerifySP> {
                 height: 10,
               ),
               Text(
-                "We need to register your phone without getting started!",
+                "We need to verify your phone for getting started!",
                 style: TextStyle(
                   fontSize: 16,
                 ),

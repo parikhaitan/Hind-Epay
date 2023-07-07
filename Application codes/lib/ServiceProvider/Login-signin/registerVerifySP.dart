@@ -85,7 +85,7 @@ class _RegisterVerifySPState extends State<RegisterVerifySP> {
                 height: 10,
               ),
               Text(
-                "We need to register your phone without getting started!",
+                "We need to register your phone for getting started!",
                 style: TextStyle(
                   fontSize: 16,
                 ),

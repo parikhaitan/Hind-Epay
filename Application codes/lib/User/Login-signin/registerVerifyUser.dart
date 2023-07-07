@@ -134,11 +134,7 @@ class _RegisterVerifyState extends State<RegisterVerify> {
                 children: [
                   TextButton(
                       onPressed: () {
-                        Navigator.pushNamedAndRemoveUntil(
-                          context,
-                          'phone',
-                          (route) => false,
-                        );
+                        Navigator.pop(context);
                       },
                       child: Text(
                         "Edit Phone Number ?",

@@ -1,5 +1,7 @@
 ///The service provider is entering the bank details here for payement for voucher generation
 
+import 'dart:convert';
+
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +36,7 @@ class _ErupiTransactionFormState extends State<ErupiTransactionForm> {
   String? _selectedBranch;
   String? _organisationName;
   String? _accountNumber;
+  String? ifscCode;
   String nums = "";
 
   @override
@@ -50,7 +53,7 @@ class _ErupiTransactionFormState extends State<ErupiTransactionForm> {
               children: <Widget>[
                 Image.asset(
                   'Assets/Images/Hind e-pay logo.png',
-                  height: 0.4 * MediaQuery.of(context).size.height,
+                  height: 0.3 * MediaQuery.of(context).size.height,
                   width: 0.8 * MediaQuery.of(context).size.width,
                 ),
 
@@ -155,6 +158,25 @@ class _ErupiTransactionFormState extends State<ErupiTransactionForm> {
                   },
                 ),
 
+                //IFSC Code
+                TextFormField(
+                  onChanged: (value) {
+                    setState(() {
+                      ifscCode = value;
+                    });
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'IFSC Code',
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter IFSC code';
+                    }
+                    return null;
+                  },
+                ),
+
+
                 SizedBox(height:MediaQuery.of(context).size.height * 0.05 ),
                 FloatingActionButton.extended(
                   onPressed: () {
@@ -193,6 +215,7 @@ class _ErupiTransactionFormState extends State<ErupiTransactionForm> {
       print(nums);
 
       if (snapshot.docs.isNotEmpty) {
+      //  await FirebaseAuth.instance.setSettings(appVerificationDisabledForTesting: true);
         await FirebaseAuth.instance.verifyPhoneNumber(
             phoneNumber: nums,
             verificationCompleted:
@@ -321,6 +344,7 @@ class ReceiptPage extends StatelessWidget {
               style: TextStyle(fontSize: 18),
             ),
             SizedBox(height: 32),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [

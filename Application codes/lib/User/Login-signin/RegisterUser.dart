@@ -198,6 +198,7 @@ class _RegisterUser extends State<RegisterUserMainPage> {
                               "Please login! Phone Number  already registered");
                         }
                         else {
+                       //   await FirebaseAuth.instance.setSettings(appVerificationDisabledForTesting: true);
                           await FirebaseAuth.instance.verifyPhoneNumber(
                             phoneNumber: number,
                             verificationCompleted:

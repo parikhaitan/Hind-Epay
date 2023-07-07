@@ -57,7 +57,7 @@ class _LoginVerifyUserState extends State<LoginVerifyUser> {
                 height: 10,
               ),
               Text(
-                "We need to register your phone without getting started!",
+                "We need to verify your phone number for getting you back to your account!",
                 style: TextStyle(
                   fontSize: 16,
                 ),
@@ -103,22 +103,22 @@ class _LoginVerifyUserState extends State<LoginVerifyUser> {
                     },
                     child: Text("Verify Phone Number")),
               ),
-              Row(
-                children: [
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pushNamedAndRemoveUntil(
-                          context,
-                          'phone',
-                          (route) => false,
-                        );
-                      },
-                      child: Text(
-                        "Edit Phone Number ?",
-                        style: TextStyle(color: Colors.black),
-                      ))
-                ],
-              )
+              // Row(
+              //   children: [
+              //     TextButton(
+              //         onPressed: () {
+              //           Navigator.pushNamedAndRemoveUntil(
+              //             context,
+              //             'phone',
+              //             (route) => false,
+              //           );
+              //         },
+              //         child: Text(
+              //           "Edit Phone Number ?",
+              //           style: TextStyle(color: Colors.black),
+              //         ))
+              //   ],
+              // )
             ],
           ),
         ),

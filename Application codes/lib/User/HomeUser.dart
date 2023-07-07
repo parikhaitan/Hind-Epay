@@ -62,7 +62,7 @@ class _HomeUser extends State<HomeUser> {
                 InkWell(
                   onTap: () {
                     Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => ERupiHome()));
+                        MaterialPageRoute(builder: (context) => User_Vouchers()));
                   },
                   child: reusableContainerButton(
                       MediaQuery.of(context).size.height,

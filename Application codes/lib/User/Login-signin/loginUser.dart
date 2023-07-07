@@ -8,6 +8,7 @@ import 'package:hind_e_pay/User/Login-signin/LoginVerifyUser.dart';
 class LoginUser extends StatefulWidget {
   const LoginUser({Key? key}) : super(key: key);
   static String verify = "";
+  static String id = "";
 
   @override
   State<LoginUser> createState() => _LoginUser();
@@ -124,6 +125,7 @@ class _LoginUser extends State<LoginUser> {
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       } else {
+                        //await FirebaseAuth.instance.setSettings(appVerificationDisabledForTesting:true);
                         await FirebaseAuth.instance.verifyPhoneNumber(
                           phoneNumber: number,
                           verificationCompleted:
@@ -179,7 +181,7 @@ class _LoginUser extends State<LoginUser> {
         .collection(collection)
         .where('Phone No', isEqualTo: phoneNumber)
         .get();
-
+    LoginUser.id = querySnapshot.docs[0].id;
     if (querySnapshot.docs.isNotEmpty) {
       // Phone number is already registered
       print('Phone number is already registered.');
